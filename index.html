@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taiwan Itinerary · Nov 1–14, 2026</title>
+<style>
+  :root {
+    --taipei: #1a3a5c;
+    --tainan: #7b3f00;
+    --kaohsiung: #2d5a27;
+    --accent: #c8a84b;
+    --light: #f8f6f1;
+    --text: #2c2c2a;
+    --muted: #6b6b65;
+    --border: #ddd8cc;
+    --warning: #8b3a00;
+    --fest: #7a1f3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: var(--text); background: #fff; font-size: 15px; line-height: 1.7; }
+  
+  /* COVER */
+  .cover {
+    background: var(--taipei);
+    color: white;
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--taipei) 0%, var(--accent) 50%, var(--kaohsiung) 100%);
+  }
+  .cover-eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .cover-title {
+    font-size: 52px;
+    font-weight: normal;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .cover-subtitle {
+    font-size: 20px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item { font-family: Arial, sans-serif; font-size: 13px; }
+  .cover-meta-label { color: var(--accent); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 3px; }
+  .cover-meta-value { color: white; }
+
+  /* LEGEND / KEY */
+  .key-bar {
+    background: var(--light);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .key-item { display: flex; align-items: center; gap: 6px; color: var(--muted); }
+  .key-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* CITY HEADER */
+  .city-header {
+    padding: 50px 60px 30px;
+    border-bottom: 3px solid var(--border);
+    position: relative;
+  }
+  .city-header.taipei { border-left: 8px solid var(--taipei); background: #f0f4f8; }
+  .city-header.tainan { border-left: 8px solid var(--tainan); background: #faf5ee; }
+  .city-header.kaohsiung { border-left: 8px solid var(--kaohsiung); background: #f0f5f0; }
+  .city-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .city-name { font-size: 36px; font-weight: normal; margin-bottom: 8px; }
+  .city-dates { font-family: Arial, sans-serif; font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+  .city-intro { font-size: 15px; line-height: 1.8; color: var(--text); max-width: 700px; }
+  .city-stay {
+    display: inline-block;
+    margin-top: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .city-stay strong { color: var(--text); }
+
+  /* DAY CARD */
+  .day-section { padding: 40px 60px; border-bottom: 1px solid var(--border); }
+  .day-section:last-of-type { border-bottom: none; }
+  .day-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+  .day-number {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .day-title-block { flex: 1; }
+  .day-title { font-size: 22px; font-weight: normal; margin-bottom: 4px; line-height: 1.3; }
+  .day-subtitle { font-family: Arial, sans-serif; font-size: 13px; color: var(--muted); }
+  .tag {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .tag-fest { background: #fde8ef; color: #7a1f3a; }
+  .tag-new { background: #e8f5e8; color: #1a5c1a; }
+  .tag-warn { background: #fdf0e0; color: #8b3a00; }
+  .tag-route { background: #e8f0f8; color: #1a3a5c; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 70px 12px 1fr;
+    gap: 0 16px;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+  .tl-time {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: bold;
+    text-align: right;
+    padding-top: 2px;
+    letter-spacing: 0.5px;
+  }
+  .tl-dot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .tl-line {
+    flex: 1;
+    width: 1px;
+    background: var(--border);
+    min-height: 100%;
+    margin-top: 4px;
+  }
+  .tl-content {}
+  .tl-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+  .tl-text { font-size: 14px; line-height: 1.7; color: var(--text); }
+  .tl-text strong { color: var(--text); }
+  .tl-detail {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* PLACE CARD */
+  .place-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+  .place-name { font-size: 15px; font-weight: bold; margin-bottom: 4px; }
+  .place-meta {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .place-desc { font-size: 13px; line-height: 1.65; color: var(--text); }
+  .place-tip {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--warning);
+    font-family: Arial, sans-serif;
+  }
+  .place-tip::before { content: "✦ "; }
+
+  /* IMAGES */
+  .img-row {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  .img-row.col2 { grid-template-columns: 1fr 1fr; }
+  .img-row.col3 { grid-template-columns: 1fr 1fr 1fr; }
+  .img-row.col1 { grid-template-columns: 1fr; }
+  .img-wrap { position: relative; overflow: hidden; border-radius: 4px; }
+  .img-wrap img { width: 100%; height: 200px; object-fit: cover; display: block; }
+  .img-wrap.tall img { height: 280px; }
+  .img-cap {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    padding: 5px 0 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* TIP BOX */
+  .tip-box {
+    background: #fff9ed;
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .tip-box .tip-head {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .warn-box {
+    background: #fff3f0;
+    border-left: 3px solid var(--warning);
+    padding: 12px 16px;
+    margin-top: 16px;
+    border-radius: 0 4px 4px 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .fest-box {
+    background: #fde8ef;
+    border-left: 3px solid var(--fest);
+    padding: 12px 16px;
+    margin-top: 16px;
+    border-radius: 0 4px 4px 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .fest-box .fest-head {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--fest);
+    margin-bottom: 4px;
+  }
+
+  /* ROUTE NOTE */
+  .route-note {
+    background: #eef4fb;
+    border: 1px solid #c5d8ee;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #1a3a5c;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+  .route-note::before { content: "🗺 ROUTE  "; font-weight: bold; letter-spacing: 1px; }
+
+  /* QUICK REF TABLE */
+  .quick-ref {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    margin: 20px 0;
+  }
+  .quick-ref th {
+    background: var(--taipei);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  .quick-ref td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .quick-ref tr:nth-child(even) td { background: var(--light); }
+
+  /* FESTIVALS PANEL */
+  .festivals-intro {
+    padding: 40px 60px;
+    background: #1a1a2e;
+    color: white;
+  }
+  .festivals-intro h2 { font-size: 26px; font-weight: normal; margin-bottom: 8px; color: var(--accent); }
+  .festivals-intro p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.8); max-width: 680px; }
+  .fest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .fest-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .fest-item-title { font-size: 14px; font-weight: bold; margin-bottom: 4px; color: var(--accent); }
+  .fest-item-dates { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+  .fest-item-desc { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.8); }
+
+  /* PAGE DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+    margin: 0 60px;
+  }
+
+  /* PRACTICAL INFO */
+  .practical {
+    padding: 40px 60px;
+    background: #f0f4f8;
+    border-top: 3px solid var(--taipei);
+  }
+  .practical h2 { font-size: 22px; font-weight: normal; margin-bottom: 20px; color: var(--taipei); }
+  .prac-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .prac-item { }
+  .prac-head { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .prac-body { font-size: 13px; line-height: 1.7; }
+
+  /* COLOR CATEGORIES */
+  .c-hike { color: #1a5c1a; } .bg-hike { background: #1a5c1a; }
+  .c-food { color: #8b5a00; } .bg-food { background: #8b5a00; }
+  .c-art { color: #3a2080; } .bg-art { background: #3a2080; }
+  .c-queer { color: #8b1a4a; } .bg-queer { background: #8b1a4a; }
+  .c-shop { color: #1a6b4a; } .bg-shop { background: #1a6b4a; }
+  .c-transit { color: #5a5a55; } .bg-transit { background: #5a5a55; }
+  .c-culture { color: #1a3a7c; } .bg-culture { background: #1a3a7c; }
+  .c-fest { color: #8b1a1a; } .bg-fest { background: #8b1a1a; }
+  .c-nature { color: #0a5a3a; } .bg-nature { background: #0a5a3a; }
+
+  img { background: #e8e4db; }
+  img[src=""], img:not([src]) { display: none; }
+  @media print {
+    .city-header, .day-section { page-break-inside: avoid; }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div class="cover-eyebrow">Personal Travel Guide</div>
+  <h1 class="cover-title">Taiwan<br>Nov 1–14, 2026</h1>
+  <p class="cover-subtitle">Taipei · Tainan · Kaohsiung</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Duration</span>
+      <span class="cover-meta-value">13 nights, 14 days</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Arrival</span>
+      <span class="cover-meta-value">Nov 1 · 9pm · TPE</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Departure</span>
+      <span class="cover-meta-value">Nov 14 · 11am · TPE</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Focus</span>
+      <span class="cover-meta-value">Street art · Hikes · Night markets · Queer scene · Flea markets</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== LEGEND ==================== -->
+<div class="key-bar">
+  <div class="key-item"><div class="key-dot bg-fest"></div>Festival / event</div>
+  <div class="key-item"><div class="key-dot bg-hike"></div>Hike / nature</div>
+  <div class="key-item"><div class="key-dot bg-nature"></div>Wildlife / wetlands</div>
+  <div class="key-item"><div class="key-dot bg-food"></div>Food / night market</div>
+  <div class="key-item"><div class="key-dot bg-art"></div>Street art / public art</div>
+  <div class="key-item"><div class="key-dot bg-queer"></div>Queer scene</div>
+  <div class="key-item"><div class="key-dot bg-shop"></div>Shopping / flea market</div>
+  <div class="key-item"><div class="key-dot bg-culture"></div>Temple / culture</div>
+  <div class="key-item"><div class="key-dot bg-transit"></div>Transit / logistics</div>
+</div>
+
+<!-- ==================== FESTIVALS ==================== -->
+<div class="festivals-intro">
+  <h2>Festivals &amp; Events During Your Dates</h2>
+  <p>November is one of the best months to visit Taiwan — dry, warm in the south, and stacked with cultural events. Your dates overlap with two major events perfectly: the Golden Horse Film Festival (Taiwan's equivalent of the Oscars for Chinese-language cinema) runs the entire time you're in Taipei, and the Tainan Jazz Festival lands exactly as you arrive in Tainan.</p>
+  <div class="fest-grid">
+    <div class="fest-item">
+      <div class="fest-item-title">🎬 Golden Horse Film Festival</div>
+      <div class="fest-item-dates">Nov 6–22, 2026 · Taipei cinemas</div>
+      <div class="fest-item-desc">Taiwan's most prestigious film event — the Oscars of Chinese-language cinema. Screenings across Taipei include the recurring <em>Queer Utopia</em> programme and international premieres. Book tickets at goldenhorse.org.tw about 2 weeks before. Evening screenings are easy to slot around sightseeing.</div>
+    </div>
+    <div class="fest-item">
+      <div class="fest-item-title">🎷 Tainan Jazz Festival</div>
+      <div class="fest-item-dates">Nov 7–8, 2026 · Wu Garden, West Central District, Tainan</div>
+      <div class="fest-item-desc">Outdoor multi-stage jazz festival in the heart of Tainan's historic district, walking distance from your hotel. Local and international acts, free or low-cost entry, social atmosphere. You arrive the evening of Nov 6 — the timing couldn't be better.</div>
+    </div>
+    <div class="fest-item">
+      <div class="fest-item-title">🌹 Rose Exhibition</div>
+      <div class="fest-item-dates">Mid-November · Xinsheng Park, Taipei</div>
+      <div class="fest-item-desc">Free outdoor flower exhibition at its peak during your return to Taipei. Beautiful and unhurried — easy to fold into Day 13 alongside Guandu Temple and a Golden Horse screening.</div>
+    </div>
+    <div class="fest-item">
+      <div class="fest-item-title">🎭 Pas'ta'ai (Saisiyat Dwarf Spirit Ritual)</div>
+      <div class="fest-item-dates">~Nov 14–15, 2026 · Miaoli / Hsinchu counties</div>
+      <div class="fest-item-desc">A rare biennial indigenous ceremony held only in even years — all-night traditional songs, dancing, and millet wine. Falls just after your departure. Worth knowing about; can't realistically be added to the route but is extraordinary context for your time in Taiwan.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRACTICAL INFO ==================== -->
+<div class="practical">
+  <h2>Before You Go — Practical Essentials</h2>
+  <div class="prac-grid">
+    <div class="prac-item">
+      <div class="prac-head">Getting Around</div>
+      <div class="prac-body">
+        <strong>EasyCard</strong> — pick up at the airport on arrival. Works on every MRT, all city buses, YouBike rentals, and convenience store payments. Top up at any MRT station or 7-Eleven.<br><br>
+        <strong>Airport MRT</strong> — direct from TPE to Taipei Main Station, 35 min, NT$160. Runs every 15 min.<br><br>
+        <strong>HSR (High Speed Rail)</strong> — book in advance via the THSR app (in English). Taipei→Tainan 1h40m (NT$1,350), Tainan→Kaohsiung 30 min by TRA regular train (NT$69).<br><br>
+        <strong>Kaohsiung</strong> has its own MRT + LRT light rail. The Red Line is a single straight north-south line — very easy to navigate.
+      </div>
+    </div>
+    <div class="prac-item">
+      <div class="prac-head">Language</div>
+      <div class="prac-body">
+        English signage is excellent on Taipei MRT and HSR. Most urban restaurants have picture menus or QR codes. Kaohsiung MRT is fully bilingual.<br><br>
+        <strong>Google Translate camera mode</strong> is your best tool for menus and signs throughout — point, translate, order.<br><br>
+        Tainan is the spottiest for English — vendors are warm and patient with pointing. A few saved phrases in Mandarin help (xiè xiè = thank you, duō shǎo qián = how much?).<br><br>
+        <strong>Taiwan is remarkably easy to navigate without Mandarin</strong> — especially with QR codes and apps.
+      </div>
+    </div>
+    <div class="prac-item">
+      <div class="prac-head">Weather &amp; What to Pack</div>
+      <div class="prac-body">
+        <strong>Taipei (Nov 1–6, 12–14)</strong>: 18–24°C. Light jacket for evenings; mid-month can cool quickly. Low rain probability.<br><br>
+        <strong>Tainan / Kaohsiung (Nov 7–12)</strong>: 22–28°C. Essentially no rain. T-shirts and light layers.<br><br>
+        <strong>Hiking gear</strong>: Good walking shoes are essential — you'll cover 8–15km most days. Teapot Mountain requires ankle support.<br><br>
+        <strong>Outdoor shopping</strong>: Do this on Day 2 (Taipei) before going south — you can check purchased items in luggage.<br><br>
+        No umbrella needed for most of the trip, but a light packable one for Taipei doesn't hurt.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ==================== TAIPEI I ==================== -->
+<div class="city-header taipei">
+  <div class="city-label">City One</div>
+  <h2 class="city-name">Taipei</h2>
+  <p class="city-dates">November 1–6 · 5 nights · arrival 9pm Nov 1</p>
+  <p class="city-intro">Taiwan's capital is a city of effortless layers — volcanic mountains rising above neon-lit night markets, one of Asia's most vibrant queer scenes anchored around the Red House in Ximending, and a constellation of hiking trails that put you above the skyline in under an hour. Taipei rewards wandering: every block has a temple alley, a craft café, or a mural you didn't expect. Staying in Ximending puts you at the centre of the queer scene, two minutes from the Red House, and one MRT stop from the airport train.</p>
+  <div class="city-stay"><strong>Stay:</strong> Ximending district — amba Taipei Ximending (mid-range, NT$3,500–6,000) · Comma Boutique Hotel (artsy, rooftop balcony) · CityInn Hotel Plus Ximending (budget, NT$1,500–2,500) · All within 10-min walk of Red House &amp; Ximen MRT</div>
+</div>
+
+<!-- DAY 1 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 1 · Sun Nov 1</div>
+    <div>
+      <h3 class="day-title">Arrival Night — Settle In</h3>
+      <div>
+        <span class="tag tag-warn">Land 9pm</span>
+        <span class="tag tag-route">Light start</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>Arrival note:</strong> Landing at 9pm means customs, luggage, and the airport MRT will get you to Ximending around 10:30–11pm. Keep tonight easy — you have 13 big days ahead.
+  </div>
+
+  <div class="timeline" style="margin-top:24px">
+    <div class="tl-item">
+      <div class="tl-time">9:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Transit</div>
+        <div class="tl-text"><strong>Land at TPE (Taoyuan International Airport).</strong> Clear customs, grab bags. Head to the Airport MRT — direct to Taipei Main Station, 35 minutes, NT$160. One MRT stop or 15-minute walk to your Ximending hotel. Check in by ~10:30–11pm.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-queer"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-queer">Queer Scene</div>
+        <div class="tl-text"><strong>Walk to Red House plaza</strong> (5 min from most Ximending hotels). Café Dalida terrace has rainbow flags, drag energy, outdoor seating. Order a cocktail and let the jet lag dissolve into the scene. The Ximending pedestrian zone is alive until very late — buskers, street performers, neon everywhere.</div>
+        <div class="tl-detail">Taiwan became the first country in Asia to legalize same-sex marriage in 2019. The Red House district has over 25 LGBTQ+ venues clustered around a historic 1908 octagonal theater. You are in the right place.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Late</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Food</div>
+        <div class="tl-text"><strong>First Taiwan convenience store run.</strong> 7-Eleven or FamilyMart — grab an easy dinner and snacks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ximen_Red_House_-_20110109.jpg/800px-Ximen_Red_House_-_20110109.jpg" alt="Red House Ximending at night" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ximen_Red_House_-_20110109.jpg/1280px-Ximen_Red_House_-_20110109.jpg'">
+      <div class="img-cap">THE RED HOUSE THEATER, XIMENDING — HEART OF TAIPEI'S QUEER SCENE</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ximending_at_Night_20060909.jpg/800px-Ximending_at_Night_20060909.jpg" alt="Ximending at night" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ximending_night.jpg/1280px-Ximending_night.jpg'">
+      <div class="img-cap">XIMENDING PEDESTRIAN ZONE — STILL BUZZING WELL PAST MIDNIGHT</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 2 · Mon Nov 2</div>
+    <div>
+      <h3 class="day-title">Longshan Temple · Bopiliao · Outdoor Gear · Cinema Park · Red House</h3>
+      <div>
+        <span class="tag tag-new">Must-add: Longshan + Bopiliao</span>
+        <span class="tag tag-route">Zone: Wanhua → Ximending</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">7:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Temple</div>
+        <div class="tl-text"><strong>Walk to Longshan Temple</strong> (Longshan Temple MRT, Blue Line, 1 stop from Ximen — or 20-min walk through Wanhua). Arrive before 8am.</div>
+        <div class="place-card">
+          <div class="place-name">Longshan Temple 龍山寺</div>
+          <div class="place-meta">
+            <span>📍 Wanhua District</span>
+            <span>🕐 Open 6am–10pm daily</span>
+            <span>💰 Free</span>
+            <span>🚇 Longshan Temple MRT (Blue Line)</span>
+          </div>
+          <div class="place-desc">Built in 1738 by Fujian settlers, Longshan is the most important and atmospheric temple in Taipei — a syncretic space where Buddhist, Taoist, and folk deities coexist across multiple halls. Over 100 deities are enshrined, including Guanyin (goddess of mercy), Mazu (sea goddess), and the Rabbit God — the only deity in Taiwan specifically dedicated to same-sex relationships. The morning chanting ceremony at 8am is free, extraordinary, and genuinely moving: a full chorus of devotees in a haze of incense, the sound enveloping the entire courtyard. Go early for a peaceful experience before tourists arrive. The temple has been rebuilt after WWII bombing but the spiritual energy is entirely authentic.</div>
+          <div class="place-tip">Don't miss the Rabbit God (Tu Er Shen) shrine at the back left of the complex — the deity traditionally governing same-sex love. Particularly meaningful to visit.</div>
+          <div class="place-tip">Herb Alley (青草巷) runs directly adjacent — rows of traditional medicine vendors with dried roots, medicinal teas, and centuries of practice. The underground fortune teller arcade on Guangzhou St. is right below (language barrier but atmospheric).</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Heritage</div>
+        <div class="tl-text"><strong>Bopiliao Historical Block</strong> — 5-min walk east of the temple.</div>
+        <div class="place-card">
+          <div class="place-name">Bopiliao Historical Block 剝皮寮歷史街區</div>
+          <div class="place-meta">
+            <span>📍 5-min walk east of Longshan Temple</span>
+            <span>🕐 Tue–Sun 9am–6pm</span>
+            <span>💰 Free</span>
+          </div>
+          <div class="place-desc">Taipei's only completely intact Qing Dynasty and Japanese colonial streetscape — a row of red-brick arcades with carved windows and traditional wooden signboards, preserved exactly as they were in the 1800s. Unlike other heritage areas where modernity has crept in, Bopiliao was intentionally protected as a museum district. Small free exhibitions inside the restored buildings trace everyday Taipei life from the era of ox carts and merchant stalls. Quiet, photogenic, and takes about 45 minutes at a relaxed pace. Makes a striking contrast to the temple's living energy immediately beside it.</div>
+          <div class="place-tip">Best for photography in the morning light, when the brick textures glow warm. Bring a camera.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-shop">Outdoor Shopping</div>
+        <div class="tl-text"><strong>MRT or 10-min walk to outdoor gear district</strong> near Taipei Main Station. The Zhongxiao E. Rd / Zhongshan N. Rd roundabout has 5–7 specialist shops within a 5-minute walk of each other — the highest concentration of outdoor gear in Taiwan. Buy here and check it into your south-bound luggage on Day 6.</div>
+        <div class="place-card">
+          <div class="place-name">Outdoor Gear Cluster · Zhongxiao / Zhongshan Roundabout</div>
+          <div class="place-meta">
+            <span>📍 5-min walk east of Taipei Main Station Exit 7</span>
+            <span>🕐 Usually 10am–9pm</span>
+          </div>
+          <div class="place-desc"><strong>100 Mountain (百岳)</strong> — the best overall shop, excellent Mammut and Fjällräven selection, staff are helpful. <strong>TPSS (臺北山水)</strong> — carries many international brands not found in other shops. <strong>Deng Shan You (登山友)</strong> — been here since 1959, incredible discount rack on the 2nd floor (Hagglöfs, RAB, Deuter at sale prices). <strong>Patagonia</strong> nearby. Taiwanese techwear brands like <strong>oqLiq</strong> and <strong>WISDOM</strong> — functional waterproof clothing designed for Taiwan's humidity, with a cyberpunk aesthetic — are found in Xinyi and Zhongshan districts if you want local design labels.</div>
+          <div class="place-tip">Allow 1–2 hours. Prices are competitive. The Deng Shan You discount rack is worth digging through.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">2:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Street Art</div>
+        <div class="tl-text"><strong>Taipei Cinema Park</strong> and <strong>America Street</strong> in Ximending — large-scale murals, graffiti-style public art, skate culture energy. America Street (美國街) has more artwork, vintage stores, and counterculture shops. Both are within the Ximending pedestrian zone, easy to fold into a wander.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">6:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-queer"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-queer">Evening</div>
+        <div class="tl-text"><strong>Red House plaza</strong> evening scene — outdoor bar terraces fill up, rainbow flags, community energy. <strong>HERO Bar</strong> or <strong>Secret Garden</strong> for drinks. <strong>Café Dalida</strong> is the cornerstone — birthplace of drag in Taipei, with an open-air terrace perfect for people-watching. If you want to dance, <strong>Taboo</strong> in Zhongshan opens Wednesday nights.</div>
+        <div class="fest-box">
+          <div class="fest-head">🎬 Golden Horse Film Festival</div>
+          The festival opens today (Nov 6 in Taipei — you'll be on the HSR south, but screenings started). Check goldenhorse.org.tw for this evening's program at Taipei cinemas. The <em>Queer Utopia</em> section is worth noting for your return days.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col3">
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Longshan_Temple_Taipei_1.jpg/800px-Longshan_Temple_Taipei_1.jpg" alt="Longshan Temple Taipei" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Longshan_Temple_Taipei_1.jpg/1280px-Longshan_Temple_Taipei_1.jpg'">
+      <div class="img-cap">LONGSHAN TEMPLE — BUILT 1738, REBUILT AFTER WWII BOMBING</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Bopiliao_old_street.jpg/1280px-Bopiliao_old_street.jpg" alt="Bopiliao Historical Block" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Bopiliao_old_street.jpg/640px-Bopiliao_old_street.jpg'">
+      <div class="img-cap">BOPILIAO HISTORICAL BLOCK — TAIPEI'S LAST INTACT QIN DYNASTY STREETSCAPE</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/RedHouse.jpg/800px-RedHouse.jpg" alt="Red House LGBTQ bars" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/RedHouse.jpg/800px-RedHouse.jpg'">
+      <div class="img-cap">RED HOUSE NORTH PLAZA — 25+ LGBTQ+ VENUES SURROUNDING THIS 1908 BUILDING</div>
+    </div>
+  </div>
+
+  <div class="route-note">Longshan Temple MRT (Blue Line) → Bopiliao (5-min walk east) → Taipei Main Station outdoor shops (1 MRT stop) → Ximending (1 MRT stop or 20-min walk). One smooth arc, no backtracking.</div>
+</div>
+
+<!-- DAY 3 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 3 · Tue Nov 3</div>
+    <div>
+      <h3 class="day-title">Elephant Mountain · Xinyi · Yongkang Street · Raohe Night Market</h3>
+      <div><span class="tag tag-route">Zone: East Taipei</span></div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Hike</div>
+        <div class="tl-text"><strong>Elephant Mountain (象山, Xiangshan)</strong> — MRT to Xiangshan station, Exit 2. Trail begins 5 minutes from the MRT.</div>
+        <div class="place-card">
+          <div class="place-name">Elephant Mountain Trail 象山步道</div>
+          <div class="place-meta">
+            <span>📍 Xinyi District</span>
+            <span>⏱ 20–30 min to main viewpoint</span>
+            <span>💰 Free</span>
+            <span>🥾 Beginner-friendly · steep stone stairs</span>
+            <span>🚇 Xiangshan MRT (Red Line)</span>
+          </div>
+          <div class="place-desc">Taipei's most iconic viewpoint — a steep but short climb of mostly stone stairs to the Six Boulders Lookout, where Taipei 101 and the city skyline unfold in front of you with almost theatrical effect. The photo most people have seen of Taipei is taken from here. Morning light is softer and crowd-free. To extend the experience and escape the tourists: continue past the main lookout to the <strong>Four Beasts scenic loop</strong> — connecting peaks Tiger, Lion, and Leopard Mountain, with ridge walking and city views in all directions. The loop adds 1–1.5 hours and the crowds drop to almost nothing within 10 minutes of the main viewpoint.</div>
+          <div class="place-tip">The stairs are genuinely steep despite being short — you'll feel it. Wear shoes with grip. Early morning (8–9am) is far quieter than late morning or sunset hours.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Design District</div>
+        <div class="tl-text"><strong>Eslite Spectrum Songyan</strong> (誠品松菸) — a short walk from the trailhead or 1 MRT stop. Taiwan's flagship design bookstore, housed in a former tobacco factory, with curated indie clothing labels, concept home goods shops, craft studios, and a rooftop garden. Open 24 hours.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Neighborhood</div>
+        <div class="tl-text"><strong>Yongkang Street</strong> (永康街) and surrounding Da'an lanes — Taipei's most livable and artsy neighborhood. Independent cafés in old houses, design boutiques, bookshops, back-alley murals tucked into unexpected corners. Good lunch options (this is also where the famous Din Tai Fung flagship is, if you want the classic xiao long bao experience — the original location.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Night Market</div>
+        <div class="tl-text"><strong>Raohe Night Market</strong> (饒河夜市) — MRT to Songshan station, 1 stop.</div>
+        <div class="place-card">
+          <div class="place-name">Raohe Night Market 饒河街夜市</div>
+          <div class="place-meta">
+            <span>📍 Songshan District</span>
+            <span>🕐 Open daily ~5pm–midnight</span>
+            <span>🚇 Songshan MRT (Green Line)</span>
+          </div>
+          <div class="place-desc">A 600-meter covered street market stretching between two temple gates — one of Taipei's best night markets for actual eating rather than tourist spectacle. More local feel than Shilin. The anchor dish: <strong>black pepper buns (胡椒餅)</strong> from the famous oven stall at the temple entrance — thick, juicy pork buns baked in a clay oven, with a queue that tells you everything you need to know. Also look for: medicinal herb soup, braised pig's feet, stinky tofu (stronger than you think), fresh oyster omelets. The temple at the far end (Ciyou Temple) is beautiful to walk through and free.</div>
+          <div class="place-tip">The black pepper bun stall is at the Ciyou Temple entrance end. The queue is fast-moving. You want this.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Taipei_101_from_Elephant_Mountain_01.jpg/800px-Taipei_101_from_Elephant_Mountain_01.jpg" alt="Taipei 101 from Elephant Mountain" onerror="this.src='https://images.unsplash.com/photo-1470004914212-05527e49370b?w=800'">
+      <div class="img-cap">TAIPEI 101 FROM ELEPHANT MOUNTAIN — THE CITY'S MOST ICONIC VIEW</div>
+    </div>
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Raohe_Street_Night_Market_2013.jpg/1280px-Raohe_Street_Night_Market_2013.jpg" alt="Raohe Night Market" onerror="this.src='https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=800'">
+      <div class="img-cap">RAOHE NIGHT MARKET — THE BLACK PEPPER BUN STALL IS THE FIRST THING YOU'LL SMELL</div>
+    </div>
+  </div>
+
+  <div class="route-note">Xiangshan MRT (east) → Eslite Songyan (walk or 1 stop) → Da'an / Yongkang (MRT west) → Songshan Night Market (1 stop east). All on the same east-central arc.</div>
+</div>
+</body>
+</html>
+
+<!-- DAY 4 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 4 · Wed Nov 4</div>
+    <div>
+      <h3 class="day-title">Yangmingshan Hike · Dihua Street · Dadaocheng Wharf Sunset · Ningxia</h3>
+      <div>
+        <span class="tag tag-new">Wharf sunset added</span>
+        <span class="tag tag-route">Zone: North → Old City West</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Hike</div>
+        <div class="tl-text"><strong>Yangmingshan National Park</strong> — Bus from Jiantan MRT (Red Line) direct to the park. Multiple bus routes available from the Jiantan bus stop.</div>
+        <div class="place-card">
+          <div class="place-name">Yangmingshan National Park 陽明山國家公園</div>
+          <div class="place-meta">
+            <span>📍 North Taipei</span>
+            <span>⏱ 2–4 hrs depending on trail</span>
+            <span>💰 Free</span>
+            <span>🥾 Beginner to intermediate</span>
+          </div>
+          <div class="place-desc">A volcanic national park sitting directly above Taipei's northern suburbs — sulfur fumaroles, hot springs, and extraordinary highland scenery. In November, the <strong>silver grass (芒草)</strong> is in full bloom across the hillsides, turning the landscape into something out of a Japanese film.<br><br>
+          <strong>Recommended for your fitness level:</strong> The <strong>Erziping Trail (二子坪步道)</strong> — flat, accessible, 2-km loop through misty highland meadows with volcanic landscape and the famous sulfur fumaroles at Xiaoyoukeng nearby. Entirely different in character from Elephant Mountain — here you're above the clouds rather than looking up at a skyline.<br><br>
+          <strong>For more challenge:</strong> Qixingshan (七星山, Seven Star Mountain) at 1,120m — the highest peak in Taipei, moderate 3-hr round trip with steep stone steps and 360° views. Stunning but commit to an early start.</div>
+          <div class="place-tip">Free foot-soaking hot spring pool at Lengshuikeng visitor center on the descent — natural geothermal water, wooden benches, local elderly crowd, completely free. One of the most pleasant 20 minutes in Taipei.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-shop">Market</div>
+        <div class="tl-text"><strong>Return to Jiantan MRT → Minquan W. Rd area → walk to Dihua Street</strong> (15-min walk from Minquan W. Rd station).</div>
+        <div class="place-card">
+          <div class="place-name">Dihua Street 迪化街 + Dadaocheng District</div>
+          <div class="place-meta">
+            <span>📍 Datong District — 15-min walk from Minquan W. Rd MRT</span>
+            <span>🕐 Most shops open 10am–6pm</span>
+          </div>
+          <div class="place-desc">Taipei's oldest commercial street, stretching along the Tamsui River in a neighborhood called Dadaocheng — once Taiwan's most important trade port. The Baroque shophouse facades (built by 19th-century merchants who wanted to look like they'd traveled the world) now house a wonderful mix: traditional dried goods and tea merchants operating exactly as they have for 150 years, alongside indie design pop-ups, concept cafés, and fabric stores. It's one of the few places in Taipei where you can feel the city's actual age. Browse at will — buy tea, dried mango, fabric if it interests you.</div>
+          <div class="place-tip">The small Xiahai City God Temple (霞海城隍廟) at the north end of Dihua St. is one of the most popular matchmaking temples in Taiwan — there's usually a long prayer line. Worth a quick look.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">4:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Hidden Gem</div>
+        <div class="tl-text"><strong>Dadaocheng Wharf / Pier 5</strong> — walk 10 minutes west from Dihua Street down to the Tamsui River.</div>
+        <div class="place-card">
+          <div class="place-name">Dadaocheng Wharf 大稻埕碼頭 (Pier 5)</div>
+          <div class="place-meta">
+            <span>📍 West end of Dihua St., Tamsui River</span>
+            <span>🕐 Late afternoon into evening — food stalls open ~4:30pm</span>
+            <span>💰 Free</span>
+          </div>
+          <div class="place-desc">Underrated sunset spot in Taipei. From late afternoon the riverside pier transforms: bars, craft beer stalls, Taiwanese street food, live music, and locals gathering at the river's edge as the sky turns. The Tamsui River reflects the pink and orange light perfectly.</div>
+          <div class="place-tip">Budget 1.5–2 hours here. Bring a light jacket as it cools by the river after dark.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Night Market</div>
+        <div class="tl-text"><strong>Ningxia Night Market</strong> (寧夏夜市) — 15-minute walk south from the wharf. Taipei's most beloved local night market for traditional Taiwanese snacks: braised pork rice (the definitive version), oyster omelet, aiyu jelly with lemon, red bean cakes. Compact, never overwhelming, always delicious. Ends around midnight.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Qixingshan_Yangmingshan.jpg/800px-Qixingshan_Yangmingshan.jpg" alt="Yangmingshan trails" onerror="this.src='https://images.unsplash.com/photo-1578489804753-f29e90e3ce23?w=800'">
+      <div class="img-cap">YANGMINGSHAN — MISTY VOLCANIC HIGHLAND ABOVE TAIPEI, SILVER GRASS IN NOVEMBER BLOOM</div>
+    </div>
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Dihua_Street_Taipei.jpg/800px-Dihua_Street_Taipei.jpg" alt="Dihua Street Taipei" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Dihua_street_taipei.jpg/1280px-Dihua_street_taipei.jpg'">
+      <div class="img-cap">DIHUA STREET — BAROQUE SHOPHOUSES DATING TO THE 1800S, NOW HOUSING TEA AND INDIE DESIGN</div>
+    </div>
+  </div>
+
+  <div class="route-note">Jiantan MRT (north) → Minquan W. Rd (MRT south) → Dihua St (15-min walk) → Dadaocheng Wharf (10-min walk west) → Ningxia Night Market (15-min walk south). One smooth downhill arc toward the city center.</div>
+</div>
+
+<!-- DAY 5 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 5 · Thu Nov 5</div>
+    <div>
+      <h3 class="day-title">Jiufen Day Trip · Teapot Mountain · Yin-Yang Sea · Taboo Night</h3>
+      <div><span class="tag tag-route">Self-contained loop</span></div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Transit</div>
+        <div class="tl-text"><strong>Bus from Taipei Main Station</strong> to Jiufen Old Street (~1 hour). Bus 1062 or tour buses from the Taipei Bus Station. Returns run until late evening.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Hike + Views</div>
+        <div class="tl-text"><strong>Short bus hop to Jinguashi</strong> → Teapot Mountain trail.</div>
+        <div class="place-card">
+          <div class="place-name">Teapot Mountain 茶壺山 · Jinguashi Gold Ecological Park</div>
+          <div class="place-meta">
+            <span>📍 Jinguashi, New Taipei City</span>
+            <span>⏱ 2–3 hrs total</span>
+            <span>💰 Free trail (park entrance free if hiking only)</span>
+            <span>🥾 Intermediate — involves rock scrambling</span>
+          </div>
+          <div class="place-desc">One of the most satisfying hikes near Taipei: the trail winds up through a former gold mining area to a distinctive cluster of rocks shaped exactly like a teapot, with a cave-like passage through the "spout" that you physically climb through. The views from the top look down on the coastline, the ruined mining infrastructure, and the extraordinary <strong>Yin-Yang Sea</strong> directly below.<br><br>
+          <strong>The Yin-Yang Sea (陰陽海)</strong> is a natural phenomenon caused by iron sulfide seeping from the old mine drainage — the ocean turns a striking blue-gold at the point where the mineral water meets the sea. You'll see it clearly from the Teapot Mountain ridgeline and from the road below. It looks almost CGI. There's a viewpoint platform on the main road specifically for photographs.<br><br>
+          The Jinguashi Gold Ecological Park itself is fascinating — the remains of a former Japanese-era gold mine with preserved infrastructure, a museum, and a free touchable gold bar (the largest single piece you can legally touch in the world at 220kg).</div>
+          <div class="place-tip">The cave passage through the "teapot" requires some scrambling and ducking — not technical, but not for anyone with claustrophobia. The longer Banpingshan extension (adds 1 hr, more scrambling, ropes on cliff sections) is spectacular if you want more challenge.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-shop">Shops</div>
+        <div class="tl-text"><strong>Return to Jiufen Old Street.</strong> The stepped alley market has some of the best small indie shops in northern Taiwan: handmade jewelry, ceramics, vintage accessories, prints. Also: warm taro balls (芋圓), peanut ice cream wraps, and the tea houses perched over the misty hillside above the sea — some of the most atmospheric settings for a cup of tea you'll find anywhere.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">5:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Return</div>
+        <div class="tl-text">Bus back to Taipei (~1 hour). Dinner at hotel area — you've earned a sit-down meal.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-queer"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-queer">Night Out</div>
+        <div class="tl-text"><strong>Taboo</strong> in Zhongshan — one of Taipei's best LGBTQ+ clubs. Or just sleep.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Jiufen_overview.jpg/800px-Jiufen_overview.jpg" alt="Jiufen Old Street" onerror="this.src='https://images.unsplash.com/photo-1470004914212-05527e49370b?w=800'">
+      <div class="img-cap">JIUFEN OLD STREET — GOLD-RUSH HILLSIDE TOWN ABOVE THE SEA, CROWDED BUT WORTH IT IN THE MORNING</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Teapot_mountain_Taiwan.jpg/800px-Teapot_mountain_Taiwan.jpg" alt="Teapot Mountain hike" onerror="this.src='https://images.unsplash.com/photo-1508185215827-f37f8b5cd3a9?w=800'">
+      <div class="img-cap">TEAPOT MOUNTAIN — THE YIN-YANG SEA VISIBLE FROM THE RIDGELINE BELOW</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 6 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 6 · Fri Nov 6</div>
+    <div>
+      <h3 class="day-title">Gongguan + Treasure Hill → HSR South → Tainan Jazz Festival Night 1</h3>
+      <div>
+        <span class="tag tag-fest">🎷 Jazz Fest Night 1</span>
+        <span class="tag tag-route">Transit Day</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-shop">Flea Market</div>
+        <div class="tl-text"><strong>Gongguan area</strong> (公館) — MRT to Gongguan station. University neighborhood with secondhand book stalls on the street, vintage clothing vendors, student-run art pop-ups around the MRT exit. The most countercultural, alternative energy of anywhere in Taipei. Good for browsing, not for buying specific things.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Artist Village</div>
+        <div class="tl-text"><strong>Treasure Hill Artist Village</strong> (寶藏巖國際藝術村) — 20-min walk along the riverbank from Gongguan. A former military dependents' settlement built into a cliff above the Xindian River, now home to artist studios and community spaces, with art installations embedded directly into the old concrete structures. Very small, very alternative — not polished, not touristy. Take the riverside walk there for the full effect.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">HSR South</div>
+        <div class="tl-text"><strong>Check out or store bags → Taipei Main Station → HSR to Tainan</strong>. Book 2–2:30pm departure. 1 hr 40 min journey. Check into hotel.</div>
+        <div class="tl-detail">HSR tip: the THSR app books in English. Unreserved seats are always available but reserved seats guarantee comfort. Book at least a few days ahead on Fridays.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-fest"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-fest">Festival</div>
+        <div class="tl-text"><strong>Tainan Jazz Festival — Night 1</strong> at Wu Garden (武德殿), West Central District. Outdoor multi-stage event. Grab danzai noodles from a street stall on the way — Tainan's signature noodle, a bowl of egg noodles in shrimp broth with minced pork, served by vendors who've been making the same recipe for generations.</div>
+        <div class="fest-box">
+          <div class="fest-head">🎷 Tainan Jazz Festival</div>
+          This two-night outdoor jazz festival sits in Tainan's historic West Central District, surrounded by 400-year-old temples and lantern-lit lanes. The convergence of jazz music with Taiwan's oldest city creates a genuinely singular atmosphere. Entry is free or very low cost. Arrive by early evening for the best spots.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== TAINAN ==================== -->
+<div class="city-header tainan">
+  <div class="city-label">City Two</div>
+  <h2 class="city-name">Tainan</h2>
+  <p class="city-dates">November 7–9 · 2 nights · arrive evening Nov 6</p>
+  <p class="city-intro">Taiwan's oldest city (400+ years) and undisputed food capital. Every street has a temple alley; every alley has a noodle stall. Tainan is where Taiwanese identity is most concentrated — the city has more temples per capita than anywhere in Taiwan, more distinct local dishes than any other city, and a creative, artsy energy that coexists naturally with its historical weight. Unlike Taipei, Tainan rewards slowness. The best moments are found by wandering: pushing through a door you weren't sure about, following lantern light down a lane, sitting at a plastic stool at midnight eating beef soup.</p>
+  <div class="city-stay"><strong>Stay:</strong> West Central District — walking distance to all main sights, Jazz Fest venue, temples, and Shennong St. <strong>Hotel Cozzi Tainan</strong> (mid-range, reliable) · <strong>Wabisabi Hotel</strong> (budget, Japanese capsule aesthetic, near Shennong St). NT$1,200–3,000/night.</div>
+</div>
+
+<!-- DAY 7 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 7 · Sat Nov 7</div>
+    <div>
+      <h3 class="day-title">West Central Temples · Confucius + Narrow Door Café · Hai'an Road · Jazz Festival Night 2</h3>
+      <div>
+        <span class="tag tag-fest">🎷 Jazz Fest Night 2</span>
+        <span class="tag tag-new">Confucius Temple + Café added</span>
+        <span class="tag tag-route">Zone: Walkable cluster</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">7:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Breakfast</div>
+        <div class="tl-text"><strong>Tainan beef soup</strong> — locals queue from 6am for this. A bowl of clear beef broth with paper-thin slices of raw beef that cook in the hot soup, served with rice or vermicelli. One of Tainan's most distinctive dishes. Look for any stall with a crowd near the train station area — A-Cai Beef Soup (阿財牛肉湯) is a well-known option. This sets the tone for Tainan: food as ritual.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Temples</div>
+        <div class="tl-text"><strong>West Central temple walk</strong> — three major temples all within a 10-minute walking loop of each other.</div>
+        <div class="place-card">
+          <div class="place-name">Chihkan Tower 赤崁樓 (Fort Provintia)</div>
+          <div class="place-meta"><span>📍 West Central District</span><span>🕐 8:30am–9pm</span><span>💰 NT$50</span></div>
+          <div class="place-desc">Built by the Dutch in 1653 as Fort Provintia, now completely Chinese in architectural style after centuries of rebuilds. The complex has two main buildings connected by a bridge, beautiful koi ponds, old stone tablets, and nine stone turtle statues carrying imperial stelae (rubbing the turtles' heads is said to bring good luck). Lit up beautifully at night — the tower stays open until 9pm.</div>
+        </div>
+        <div class="place-card">
+          <div class="place-name">God of War Temple 武廟 · Long Crimson Wall</div>
+          <div class="place-meta"><span>📍 2-min walk from Chihkan Tower</span><span>💰 Free</span></div>
+          <div class="place-desc">The most photogenic exterior in Tainan: a long, continuous crimson-red wall running the full length of the street, flanking the temple entrance. One of the most visually striking urban facades in all of Taiwan — photographers come specifically for this wall at golden hour.</div>
+        </div>
+        <div class="place-card">
+          <div class="place-name">Grand Matsu Temple 大天后宮</div>
+          <div class="place-meta"><span>📍 2-min walk</span><span>💰 Free</span></div>
+          <div class="place-desc">Originally the palace of a Ming Dynasty prince who committed suicide when the Qing took over. The building was converted into a Matsu temple — the most important Matsu shrine in southern Taiwan. The large Matsu statue on the main altar was carved 300 years ago by a master from Quanzhou and is considered a masterpiece of religious sculpture.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Cultural Landmark</div>
+        <div class="tl-text"><strong>Confucius Temple</strong> and <strong>Narrow Door Café</strong> — a 10-minute walk from the God of War Temple.</div>
+        <div class="place-card">
+          <div class="place-name">Tainan Confucius Temple 台南孔廟 (Taiwan's Oldest)</div>
+          <div class="place-meta"><span>📍 West Central District</span><span>🕐 8:30am–5:30pm</span><span>💰 Free (main hall)</span></div>
+          <div class="place-desc">Built in 1665 — the oldest Confucius Temple in Taiwan, predating the one in Taipei by over 70 years. Serene, uncrowded scholarly courtyards with old trees, stone pavings, and the quiet dignity of a place that has been visited by students seeking blessing for centuries. Free to enter the main hall. Small fee for the inner palace. Worth 30–45 minutes.</div>
+        </div>
+        <div class="place-card">
+          <div class="place-name">Narrow Door Café 窄門咖啡</div>
+          <div class="place-meta"><span>📍 Directly across from the Confucius Temple</span><span>🕐 ~10am–10pm</span></div>
+          <div class="place-desc">One of Tainan's most famous cafés and most delightful experiences: you enter by squeezing sideways through a 38cm-wide corridor between two buildings. Inside is an old mansion with soaring ceilings, bold colors, mismatched vintage furniture, and genuinely excellent coffee. The entrance alone is worth the visit — the coffee makes it worth staying. Queer-friendly atmosphere, artistic crowd. Decaffeinated options available if you're coffeed out.</div>
+          <div class="place-tip">You will feel ridiculous squeezing through. Everyone does. That's the point.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Art Museum</div>
+        <div class="tl-text"><strong>Tainan Art Museum Building 1</strong> — directly next to the Confucius Temple. A converted 1931 Japanese-era Art Deco police station, now an art museum where the building itself is as interesting as the exhibitions. Two buildings total (Building 2 is a striking modern structure in the city center); Building 1's historic shell is the one to prioritize. Contemporary Taiwanese and international shows.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">2:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Public Art Street</div>
+        <div class="tl-text"><strong>Hai'an Road Art Street</strong> (海安路) — a 10-minute walk from the Art Museum.</div>
+        <div class="place-card">
+          <div class="place-name">Hai'an Road Art Street 海安路藝術街</div>
+          <div class="place-meta"><span>📍 West Central District</span><span>💰 Free, outdoor</span></div>
+          <div class="place-desc">A major city thoroughfare transformed into an open-air public art corridor: large-scale murals painted directly onto the façades of buildings along the full length of the road, interspersed with light installations, sculptural streetscapes, and creative interventions in the public space. Some installations are purely visual; others are interactive. Best visited at dusk when the pieces light up and the whole street takes on a different character. This is Tainan's most concentrated outdoor art space — and one of the best street art environments in Taiwan.</div>
+          <div class="place-tip">The installations light up after dark — if you pass back through this area on the way to the Jazz Festival, the evening version is completely different in mood.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">4:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-shop">Design</div>
+        <div class="tl-text"><strong>Blueprint Cultural Creative Park</strong> (藍曬圖文創園區) nearby — former military dependents' village now covered in outdoor murals and housing indie design studios, pop-up shops, and weekend vendor markets. <strong>Hayashi Department Store</strong> (台南林百貨) — stunning 1930s Japanese Art Deco six-story department store, the only pre-war department store still operating in Taiwan. Curated Taiwanese design goods, local snacks, and an extraordinary rooftop Shinto shrine (the only one still standing above a department store in Asia). Free to browse.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-fest"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-fest">Festival</div>
+        <div class="tl-text"><strong>Tainan Jazz Festival — Final Night</strong> at Wu Garden. Second nights of music festivals typically have the most energy — the performers have warmed up, the crowd knows what it's doing. Walk to the venue from your hotel. If you want to split the evening: Jazz Festival until 10pm, then taxi to Garden Night Market (NT$150) which runs until midnight on Saturdays.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col3">
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chihkan_Tower_Tainan_Taiwan.jpg/800px-Chihkan_Tower_Tainan_Taiwan.jpg" alt="Chihkan Tower Tainan" onerror="this.src='https://images.unsplash.com/photo-1578950435899-d32d4e5bba3c?w=800'">
+      <div class="img-cap">CHIHKAN TOWER — DUTCH 1653, REBUILT IN CHINESE STYLE, LIT BEAUTIFULLY AFTER DARK</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Haian_Road_Art_Street_Tainan.jpg/800px-Haian_Road_Art_Street_Tainan.jpg" alt="Hai'an Road murals" onerror="this.src='https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800'">
+      <div class="img-cap">HAI'AN ROAD — LARGE-SCALE MURALS AND LIGHT INSTALLATIONS ALONG THE FULL STREET LENGTH</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Confucius_Temple_Tainan.jpg/800px-Confucius_Temple_Tainan.jpg" alt="Tainan Confucius Temple" onerror="this.src='https://images.unsplash.com/photo-1578950435899-d32d4e5bba3c?w=800'">
+      <div class="img-cap">TAINAN CONFUCIUS TEMPLE (1665) — OLDEST IN TAIWAN, SERENE SCHOLARLY COURTYARDS</div>
+    </div>
+  </div>
+
+  <div class="route-note">Everything today is within a 15-minute walk of your hotel and the Jazz Festival venue. Zero transit needed. The perfect cluster day.</div>
+</div>
+
+<!-- DAY 8 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 8 · Sun Nov 8</div>
+    <div>
+      <h3 class="day-title">Sicao Green Tunnel (Little Amazon) → Anping District → Shennong Street → Garden Night Market</h3>
+      <div>
+        <span class="tag tag-new">Sicao — must-add nature experience</span>
+        <span class="tag tag-route">Zone: West Tainan Arc</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">7:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-nature"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-nature">Nature · Must-See</div>
+        <div class="tl-text"><strong>Taxi to Sicao Green Tunnel</strong> (~30 min from center, NT$300–350). Arrive for 8am opening to beat heat and crowds.</div>
+        <div class="place-card">
+          <div class="place-name">Sicao Green Tunnel 四草綠色隧道 — "Taiwan's Little Amazon"</div>
+          <div class="place-meta">
+            <span>📍 Annan District, Tainan (Sicao Dazhong Temple)</span>
+            <span>🕐 Open daily 8am–4pm</span>
+            <span>💰 NT$200 per person (Mangrove Tunnel route)</span>
+            <span>⏱ 30–40 min boat ride + 30 min visit time</span>
+          </div>
+          <div class="place-desc">One of the most remarkable natural experiences in southern Taiwan, and a genuine gap in most Tainan itineraries. A bamboo raft glides through a waterway where four species of 50-year-old native mangroves have grown together overhead, their branches interlocking to form a dense, cathedral-like green canopy. The light filters through in patterns; egrets and black-crowned night herons fly alongside at eye level; fiddler crabs move through the roots. At the tunnel's deepest point, the still water creates a perfect mirror reflection of the canopy — an optical illusion called the "Angel's Kiss" or "Green Eye" where the boundary between tree and reflection disappears entirely.<br><br>
+          The experience is genuinely transportive. Guides narrate (mostly Mandarin, but the biology signs are in English and the visual experience speaks for itself). The adjacent free <strong>Sperm Whale Museum</strong> — entered with your ticket stub — houses complete specimens of a stranded mother and calf sperm whale that beached nearby. Unexpected and genuinely moving.</div>
+          <div class="place-tip">Go at 8am opening: cooler, fewer people, and the morning light through the canopy is extraordinary. Bring bug spray. The guides are enthusiastic and knowledgeable — the boat commentary is worth a translation attempt through your phone if you're curious.</div>
+          <div class="place-tip">This is part of Taijiang National Park (台江國家公園) — one of Taiwan's least-visited national parks despite being extraordinary. The wetlands protect over 240 species of fish, 200+ shellfish species, and are critical habitat for the endangered black-faced spoonbill which winters here Nov–March. You may see them from the boat.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Transit</div>
+        <div class="tl-text"><strong>Taxi 10 minutes east to Anping District.</strong> Sicao and Anping are in the same westward zone — no backtracking.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Colonial History</div>
+        <div class="tl-text"><strong>Anping Fort + Anping Treehouse.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Anping Fort 安平古堡 (Fort Zeelandia, 1624)</div>
+          <div class="place-meta"><span>📍 Anping District</span><span>🕐 8:30am–5:30pm</span><span>💰 NT$70</span></div>
+          <div class="place-desc">Taiwan's oldest surviving fort, built by the Dutch East India Company in 1624 as their regional headquarters. A 65-meter section of the original 17th-century red brick wall still stands — arguably the most significant Dutch colonial relic you can see in Taiwan. The attached museum has old maps, trade records, and the story of Koxinga — the half-Chinese, half-Japanese Ming loyalist who drove out the Dutch in 1662 and made Taiwan his base. Climb the observation tower for harbor views.</div>
+        </div>
+        <div class="place-card">
+          <div class="place-name">Anping Treehouse 安平樹屋</div>
+          <div class="place-meta"><span>📍 5-min walk from Anping Fort</span><span>🕐 8:30am–5:30pm</span><span>💰 NT$70</span></div>
+          <div class="place-desc">The most visually extraordinary site in Tainan. A 19th-century salt trading warehouse belonging to the Tait &amp; Co. merchant house was abandoned, and over the following decades the roots and branches of surrounding banyan trees grew through and around it, completely consuming the structure. Today, elevated walkways thread through the tangled root system — banyan roots the width of your torso wrap around walls, push through roofs, and cascade down facades. It looks like something from a Studio Ghibli film. Eerie, beautiful, genuinely unlike anything else. Allow 45 minutes.</div>
+          <div class="place-tip">Often compared to Angkor Wat's Ta Prohm temple for the tree-consuming-ruin aesthetic. This is genuinely one of the most unique architectural sights in Taiwan.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Anping Food</div>
+        <div class="tl-text"><strong>Anping Old Street</strong> — directly outside the fort. Taiwan's first-named street (built by the Dutch) is now lined with food stalls specializing in Anping's famous foods: <strong>shrimp rolls (蝦捲)</strong> — shrimp paste with vegetables wrapped in pig peritoneum and deep-fried; a Tainan original. <strong>Tofu pudding (豆花)</strong>. <strong>Prawn crackers</strong>. This is Tainan street eating at its most traditional.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">5:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Evening</div>
+        <div class="tl-text"><strong>Shennong Street</strong> at golden hour — taxi back to the city center (~NT$200). Shennong Street is Tainan at its most atmospheric: a Qing Dynasty-era lane that once served as a canal entrance, now flanked by lanterns at every storefront, craft cocktail bars, independent cafés, and the kind of quiet beauty that makes you walk slowly. Have a cocktail at <strong>龍九坊</strong> (on the street). The surrounding alley network connects to Shuixian Gong Market, canal-adjacent lanes, and the Medicine Temple.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Night Market</div>
+        <div class="tl-text"><strong>Garden Night Market</strong> (花園夜市, open Thu/Fri/Sat/Sun) — taxi from Shennong St area (~NT$150). Tainan's largest and most festive: hundreds of stalls, amusement rides and games for all ages, creative food alongside classics. The best single night market experience in southern Taiwan. Open until midnight.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Sicao_Green_Tunnel_Tainan.jpg/800px-Sicao_Green_Tunnel_Tainan.jpg" alt="Sicao Green Tunnel" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'">
+      <div class="img-cap">SICAO GREEN TUNNEL — THE MANGROVE CANOPY INTERLOCKS OVERHEAD, EGRETS FLY ALONGSIDE</div>
+    </div>
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/AnpingTreeHouse.jpg/800px-AnpingTreeHouse.jpg" alt="Anping Treehouse" onerror="this.src='https://images.unsplash.com/photo-1551732998-9573f695fdbb?w=800'">
+      <div class="img-cap">ANPING TREEHOUSE — BANYAN ROOTS CONSUMING AN 1867 WAREHOUSE, ELEVATED WALKWAYS INSIDE</div>
+    </div>
+  </div>
+
+  <div class="route-note">Center → Sicao (west, taxi) → Anping (10 min east of Sicao, same direction) → center for Shennong Street → Garden Night Market. One westward arc that flows naturally back to the city.</div>
+</div>
+
+<!-- DAY 9 transit -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 9 · Mon Nov 9</div>
+    <div>
+      <h3 class="day-title">Tainan Morning Ritual → TRA Train → Kaohsiung Afternoon</h3>
+      <div><span class="tag tag-route">Transit Day</span></div>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">6:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Final Tainan Breakfast</div>
+        <div class="tl-text"><strong>Coffin bread (棺材板)</strong> — a Tainan original: thick-cut toast hollowed out, deep-fried until crispy, then filled with a creamy chowder of milk, chicken, vegetables, and seafood. Named for its rectangular coffin shape. Locals eat this for breakfast without irony. One of the most uniquely Tainan things you can eat. Find it near the train station or on Zhongzheng Rd.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Train South</div>
+        <div class="tl-text"><strong>TRA train from Tainan Station to Kaohsiung</strong> (30 min, NT$69). Check into Kaohsiung hotel near Formosa Boulevard MRT (Red Line) by noon.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">First Look</div>
+        <div class="tl-text"><strong>Pier 2 Art Center</strong> — converted harbor warehouses with some of the best public street art in Taiwan. Large-scale murals on every exterior surface, outdoor sculpture installations (better lit at night), independent design shops. Give it 2–3 hrs first pass; you'll return at night.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">4:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Must-See</div>
+        <div class="tl-text"><strong>Dome of Light at Formosa Boulevard MRT Station</strong> — the world's largest glass art installation, created by Narcissus Quagliata. Four quadrants depicting birth, earth, water, and fire in kaleidoscopic stained glass covering the entire rotunda of the station. Free to see (just go into the MRT station). Social justice theme, strikingly beautiful, best viewed from the center looking up. One of the most genuinely impressive public art works in Asia.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Night Market</div>
+        <div class="tl-text"><strong>Liuhe Night Market</strong> — steps from Formosa Blvd MRT. Tourist-friendly but excellent for Kaohsiung's seafood specialties: fresh oysters, grilled clams, milkfish congee, eel noodles. Easy first night.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== KAOHSIUNG ==================== -->
+<div class="city-header kaohsiung">
+  <div class="city-label">City Three</div>
+  <h2 class="city-name">Kaohsiung</h2>
+  <p class="city-dates">November 9–12 · 3 nights</p>
+  <p class="city-intro">Taiwan's second city is a port town that has reinvented itself through public art and creative culture without losing its working-class harbor soul. Pier 2 — a series of decommissioned warehouses along the waterfront — anchors a creative district that has become the best example of industrial regeneration in Taiwan. The city is also home to wild macaques hiking trails, a dramatic British-era clifftop consulate, and some of the most photogenic religious architecture in the south. The MRT is a single straight north-south Red Line, making it easier to navigate than Taipei.</p>
+  <div class="city-stay"><strong>Stay:</strong> Near Formosa Boulevard MRT (Red Line) · <strong>Hotel Dua</strong> or <strong>Just Sleep Kaohsiung</strong> (mid-range, design sensibility, NT$2,000–4,000) · <strong>Original Hostel</strong> near Pier 2 (budget, social). All within 10 min of Pier 2, Liuhe Night Market, and Love River.</div>
+</div>
+
+<!-- DAY 10 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 10 · Tue Nov 10</div>
+    <div>
+      <h3 class="day-title">Cijin Island · Former British Consulate · Ruifeng Night Market</h3>
+      <div>
+        <span class="tag tag-fest">🎪 Ruifeng open Tuesdays</span>
+        <span class="tag tag-route">Zone: Harbor West</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Views</div>
+        <div class="tl-text"><strong>MRT Red Line to Sizihwan (O1) → walk to Gushan Pier → ferry to Cijin Island.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Former British Consulate at Takao 打狗英國領事館</div>
+          <div class="place-meta">
+            <span>📍 Top of the hill above Gushan Ferry Pier</span>
+            <span>🕐 Tue–Sun 10am–6pm (Mon closed)</span>
+            <span>💰 NT$99</span>
+          </div>
+          <div class="place-desc">The most dramatic viewpoint in Kaohsiung. A 1865 red brick building — the oldest Western building in Taiwan — sits on a cliff 50 meters above the harbor mouth, looking out over the Taiwan Strait, Cijin Island, and the entire Kaohsiung port. Built as the British consular residence when Kaohsiung (then called Takao) was a key treaty port, it has the scale and position of a Mediterranean fortress. Restored and open for tours, with period furniture and trade history exhibits. The view from the terrace at sunset is exceptional.</div>
+          <div class="place-tip">Walk up the steps from Gushan Ferry Pier — about 10 minutes uphill. Don't take a taxi; the approach on foot is part of the drama.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Island</div>
+        <div class="tl-text"><strong>Ferry to Cijin Island</strong> (旗津, NT$30 each way, 10 min) from Gushan Pier.</div>
+        <div class="place-card">
+          <div class="place-name">Cijin Island 旗津</div>
+          <div class="place-meta">
+            <span>📍 10-min ferry from Gushan Pier</span>
+            <span>💰 Ferry NT$30</span>
+          </div>
+          <div class="place-desc">A narrow sand-spit island enclosing Kaohsiung harbor — once the city's oldest settlement, now a relaxed half-day escape. <strong>Cihou Fort</strong> at the north tip (1875, Qing-era cannon emplacements, harbor views). A long beachfront walk along the west coast facing the open Taiwan Strait. The central lane of seafood restaurants is where locals come for the freshest harbor catch — oysters, sea bass, clams — served at plastic tables with cold Taiwan Beer. Rent a bicycle from the ferry terminal (NT$100/hr) to see the full island in under an hour.</div>
+          <div class="place-tip">The Cijin seafood restaurants on the main lane are excellent and cheap. Order by pointing — the fish tanks are labeled in Chinese but the staff will show you options. A full lunch for two runs NT$400–700.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">3:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Waterfront</div>
+        <div class="tl-text"><strong>Ferry back → KW2 waterfront</strong> (adjacent to Pier 2, LRT accessible). Harbor views from the terrace. Then walk the Pier 2 installations at dusk when they're lit — the outdoor light sculptures are entirely different from the daytime version.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Night Market</div>
+        <div class="tl-text"><strong>Ruifeng Night Market</strong> (瑞豐夜市) — open Tue/Sat/Sun. Take a taxi or the MRT north (NT$150 taxi, 15 min).</div>
+        <div class="place-card">
+          <div class="place-name">Ruifeng Night Market 瑞豐夜市</div>
+          <div class="place-meta">
+            <span>📍 Zuoying District, north Kaohsiung</span>
+            <span>🕐 Tue/Sat/Sun ~6pm–midnight</span>
+          </div>
+          <div class="place-desc">The night market locals actually go to — as opposed to Liuhe, which is more accessible for visitors. Over 1,000 stalls across an enormous open-air space: food from all over Taiwan, ring toss and claw machines, carnival games, cheap clothing, phone cases, and the chaotic energy of a place that exists entirely for local enjoyment. Virtually no tourists. Kaohsiung specialties: deep-fried milk, papaya milk shakes, grilled corn, oyster noodles, and meat skewers. Go hungry and without a plan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Former_British_Consulate_Kaohsiung.jpg/800px-Former_British_Consulate_Kaohsiung.jpg" alt="British Consulate Takao" onerror="this.src='https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800'">
+      <div class="img-cap">FORMER BRITISH CONSULATE AT TAKAO — 1865 RED BRICK ON A CLIFF, THE OLDEST WESTERN BUILDING IN TAIWAN</div>
+    </div>
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cijin_Ferry_Terminal_Kaohsiung.jpg/800px-Cijin_Ferry_Terminal_Kaohsiung.jpg" alt="Cijin Island ferry" onerror="this.src='https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800'">
+      <div class="img-cap">CIJIN ISLAND FERRY — NT$30 EACH WAY, 10 MINUTES ACROSS THE HARBOR MOUTH</div>
+    </div>
+  </div>
+
+  <div class="route-note">Formosa Blvd MRT → Sizihwan MRT (Red Line) → Gushan Pier (walk) → British Consulate (uphill walk) → Cijin Ferry → KW2/Pier 2 (LRT) → Ruifeng (taxi north). All on one directional MRT arc.</div>
+</div>
+
+<!-- DAY 11 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 11 · Wed Nov 11</div>
+    <div>
+      <h3 class="day-title">Shoushan Monkey Mountain · Yancheng Arts District · Love River · Lotus Lake</h3>
+      <div>
+        <span class="tag tag-new">Shoushan — must-add Kaohsiung hike</span>
+        <span class="tag tag-route">Zone: West → North Kaohsiung</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">7:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Hike · Wildlife</div>
+        <div class="tl-text"><strong>Early start for Shoushan (壽山) — Monkey Mountain.</strong> Bus 56 from Wunwu Shengdian LRT stop, or taxi to Shoushan Zoo entrance (NT$150).</div>
+        <div class="place-card">
+          <div class="place-name">Shoushan Nature Park 壽山自然公園 ("Monkey Mountain")</div>
+          <div class="place-meta">
+            <span>📍 West Kaohsiung — directly above the harbor</span>
+            <span>⏱ 2–3 hrs depending on route</span>
+            <span>💰 Free</span>
+            <span>🥾 Moderate — steep in sections, mostly well-paved</span>
+          </div>
+          <div class="place-desc">Kaohsiung's best nature experience and the hike that most visitors miss entirely. Shoushan is a limestone ridge rising directly out of the city on its western edge, home to a large population of wild <strong>Formosan rock macaques</strong> — Taiwan's only native primate — that roam freely along every trail. You will walk alongside troops of them: mothers with infants, juveniles playing in the trees, elders sitting on boulders surveying the trail with complete indifference to your presence. This kind of proximity to wild primates in an urban setting is genuinely unusual anywhere in the world.<br><br>
+          From the ridgeline, views open over the entire Kaohsiung harbor, the Love River delta, Lotus Pond to the north, and on clear days the Taiwan Strait to the west. The contrast of wild forest and working port city below is completely distinctive to Kaohsiung.<br><br>
+          <strong>Recommended route:</strong> Enter from the Shoushan Zoo (zoo entrance, trail continues past the zoo gate into the mountain). The main Zhongzheng Hiking Trail reaches the ridgeline in about 40 minutes. Turn north along the ridge for the harbor views. Return by the same path or loop via Chaishan Road on the east slope.</div>
+          <div class="place-tip">⚠️ Do NOT carry visible food. The macaques are experienced thieves and move fast. Keep snacks deep in your bag and zipped. They will not harm you if you don't have food — they're completely habituated to hikers. Feed them at your own risk (it's also bad for them ecologically).</div>
+          <div class="place-tip">Go early (7:30–8am) before the heat builds. November is comfortable but the limestone can be slippery after the rare rain. The morning light through the forest is beautiful.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Arts District</div>
+        <div class="tl-text"><strong>Descend into Yancheng District</strong> directly below Shoushan — 15-min walk downhill from the trailhead.</div>
+        <div class="place-card">
+          <div class="place-name">Yancheng District 鹽埕區 + Dagouding Old Street</div>
+          <div class="place-meta"><span>📍 Base of Shoushan, West Kaohsiung</span></div>
+          <div class="place-desc">Kaohsiung's oldest commercial neighborhood — the Yancheng 1st Public Market (a historic wet market still operating as it has for 70+ years) is surrounded by a creative cluster that has grown around it: street art on every available surface, vintage shops in old market buildings, independent record stores, and small design studios. Dagouding Old Street (打狗鐵道故事館 area) has a few preserved Japanese-era buildings and a casual arts vibe without the Pier 2 crowds. Far more neighborhood-scale than anywhere else in Kaohsiung — feels genuinely lived-in.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Waterfront</div>
+        <div class="tl-text"><strong>Love River</strong> (愛河) — 5-min walk east from Yancheng. Rent a YouBike (EasyCard, NT$20/30 min) and cruise the full riverside promenade. The Love River was heavily polluted until a major cleanup in the 1990s; it's now a park-lined waterway through the city center with a strong local presence. Cruise boats run from the main pier (NT$150) for a 30-min harbor view if you prefer.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">3:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Temple Complex</div>
+        <div class="tl-text"><strong>MRT Red Line north to Zuoying → Lotus Lake.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Lotus Lake 蓮池潭 — Dragon & Tiger Pagodas</div>
+          <div class="place-meta">
+            <span>📍 Zuoying District, north Kaohsiung</span>
+            <span>🕐 Pagodas open daily 8am–5pm</span>
+            <span>💰 Free</span>
+            <span>⚠️ Dragon & Tiger Pagodas fully reopened 2025 after renovation</span>
+          </div>
+          <div class="place-desc">A man-made lake ringed by brightly colored temples, pavilions, and religious architecture of maximum visual intensity. The anchor: the <strong>Dragon and Tiger Pagodas</strong> — two seven-story towers rising from the water, one a dragon (enter through its open mouth), one a tiger (exit through its mouth), with elaborate hand-painted murals inside depicting heaven and hell in vivid detail. Kaohsiung folk religion at its most theatrical.<br><br>
+          The <strong>Spring and Autumn Pavilions</strong> nearby (connected to the lake by a zigzag bridge) house a famous Xuantian Supreme Emperor statue and sit over the water on painted causeway bridges. The whole complex is maximalist religious art at a scale you won't find anywhere else — it rewards wandering and looking closely at the painted detail rather than rushing through for photos.</div>
+          <div class="place-tip">Allow 1.5 hours minimum for the full circuit. Enter the Dragon's mouth, walk the murals inside, exit the Tiger — this is the traditional sequence said to transform bad luck into good. Even if you're skeptical, the murals alone are worth it.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">6:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Dinner</div>
+        <div class="tl-text">Return south on Red Line. Kaohsiung specialty dinner: <strong>Keziliao harbor fresh seafood market</strong> (旗後漁港直銷中心, near Cijin ferry, open noon–7pm) for ultra-fresh fish at harbor prices — or <strong>oyster vermicelli</strong> (蚵仔麵線) and <strong>milkfish congee</strong> (虱目魚粥) at any neighborhood stall near Yancheng or Love River.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col3">
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Formosan_Rock_Macaque_Shoushan.jpg/800px-Formosan_Rock_Macaque_Shoushan.jpg" alt="Formosan macaque Shoushan" onerror="this.src='https://images.unsplash.com/photo-1503852460931-1c8b2c59e42f?w=800'">
+      <div class="img-cap">SHOUSHAN — WILD FORMOSAN MACAQUES ROAM FREELY ON EVERY TRAIL</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Love_River_Kaohsiung_Night.jpg/800px-Love_River_Kaohsiung_Night.jpg" alt="Love River Kaohsiung" onerror="this.src='https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800'">
+      <div class="img-cap">LOVE RIVER — CLEANED UP IN THE 1990S, NOW A PARK-LINED WATERWAY THROUGH THE CITY</div>
+    </div>
+    <div class="img-wrap">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Lotus_Pond_Dragon_Tiger_Pagodas.jpg/800px-Lotus_Pond_Dragon_Tiger_Pagodas.jpg" alt="Lotus Lake Dragon Tiger Pagodas" onerror="this.src='https://images.unsplash.com/photo-1503852460931-1c8b2c59e42f?w=800'">
+      <div class="img-cap">LOTUS LAKE — ENTER THROUGH THE DRAGON'S MOUTH, EXIT THROUGH THE TIGER'S</div>
+    </div>
+  </div>
+
+  <div class="route-note">Shoushan (west cliff) → descend into Yancheng (15-min walk) → Love River (5-min walk east) → MRT Red Line north to Lotus Lake (Zuoying) → return south to center. One continuous arc without doubling back.</div>
+</div>
+
+<!-- DAY 12 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 12 · Thu Nov 12</div>
+    <div>
+      <h3 class="day-title">Weiwuying Arts Center → Ciaotou Sugar Factory → HSR Back to Taipei</h3>
+      <div>
+        <span class="tag tag-new">Weiwuying + Ciaotou — zero-detour stops en route to HSR</span>
+        <span class="tag tag-route">Transit Day — both stops are on the MRT line to the station</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Architecture</div>
+        <div class="tl-text"><strong><i>*MIGHT HAVE TO SKIP</i> LRT to Weiwuying stop → National Kaohsiung Center for the Arts.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Weiwuying National Kaohsiung Center for the Arts 衛武營國家藝術文化中心</div>
+          <div class="place-meta">
+            <span>📍 Fengshan District (on the LRT/MRT Red Line)</span>
+            <span>🕐 Tue–Sun 11am–8pm (grounds accessible from morning)</span>
+            <span>💰 Free to wander</span>
+          </div>
+          <div class="place-desc">The largest performing arts center in Southeast Asia, designed by Dutch firm Mecanoo (2018). The building's form was inspired by the banyan trees of the surrounding park — its roof undulates in organic waves, creating open-air passages and public plazas that flow continuously between inside and outside without walls. You can walk through the entire complex for free, past the opera house, concert hall, and theater lobbies. The building itself is a work of public art: bold, strange, and completely unlike any performing arts building you've seen. Check the website for any morning performances or outdoor markets during your visit.</div>
+          <div class="place-tip">The surrounding park (former military grounds, now beautifully landscaped) is excellent for a morning walk before heading north.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Industrial Heritage</div>
+        <div class="tl-text"><strong>MRT Red Line one stop north → Ciaotou Refinery station → Qiaotou Sugar Factory.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Qiaotou Sugar Factory 橋頭糖廠</div>
+          <div class="place-meta">
+            <span>📍 Qiaotou District — Ciaotou Refinery MRT Station</span>
+            <span>🕐 Open daily 9am–5pm</span>
+            <span>💰 Free</span>
+          </div>
+          <div class="place-desc">Taiwan's oldest sugar refinery (1901, built by the Japanese colonial administration) operated continuously until 1999 when the last crop was processed and the factory went silent. Now an industrial heritage park, entirely free to explore: original narrow-gauge railway carriages on rusting tracks through the grounds, factory buildings in varying states of photogenic decay, koi ponds, old colonial staff housing converted to small shops, and public art installations scattered throughout. Guerrilla murals appear in every corner — the peeling paint, aged metal, and overgrown grounds make it one of the most atmosphere-rich spaces in Kaohsiung.<br><br>
+          <strong>Mikan the station cat</strong> — the resident station cat, adopted by MRT staff and now a minor celebrity with a cat-themed bakery next to the MRT exit and a proper station employee badge. Worth five minutes of your day purely for the delight of it.</div>
+          <div class="place-tip">Best in morning light when the long shadows fall across the old railway tracks. The ice cream stall sells sugarcane-flavored soft serve made from the refinery's last batch of sugar — iconic.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">HSR North</div>
+        <div class="tl-text"><strong>MRT one more stop north → Zuoying HSR Station → HSR to Taipei</strong> (1.5 hrs, NT$1,490). Arrive Taipei ~3:30–4pm. Check into hotel — same Ximending area recommended for easy airport access Nov 14.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">5:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Recovery</div>
+        <div class="tl-text"><strong>Beitou hot springs</strong> (MRT Red Line, 20 min north) — free outdoor foot-soaking pool in Beitou Park. Then the <strong>Beitou Hot Spring Museum</strong> (1913 Japanese-era wooden building, free, beautiful) and the <strong>Beitou Public Library</strong> — consistently voted one of the most beautiful library buildings in the world, a green-certified wooden structure embedded in the forest above the hot spring valley. Deeply restorative after 12 days of walking.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-head">Route efficiency note</div>
+    Weiwuying → Ciaotou Refinery (1 MRT stop) → Zuoying HSR (1 MRT stop). These two cultural sites are literally on the way to the train station — the MRT Red Line connects them in sequence. This is the most efficient possible exit from Kaohsiung: culture-on-the-way rather than a detour.
+  </div>
+</div>
+
+
+<!-- ==================== RETURN TAIPEI ==================== -->
+<div class="city-header taipei">
+  <div class="city-label">Return — City One</div>
+  <h2 class="city-name">Taipei Again</h2>
+  <p class="city-dates">November 12–14 · 2 nights · depart 11am Nov 14</p>
+  <p class="city-intro">Coming back to Taipei after two weeks in the south has a particular quality: the city feels both familiar and refreshed. Use these final days to see what didn't fit at the start — Guandu Temple's dramatic cliff-carved interior, the Beitou valley, the rose gardens in Xinsheng Park — and to close the trip with a Golden Horse evening screening and the Jianguo flea market on the morning of your departure.</p>
+  <div class="city-stay"><strong>Stay:</strong> Same Ximending area for easy airport MRT access. Alternatively, a hotel near Taipei Main Station saves 5 minutes on departure morning.</div>
+</div>
+
+<!-- DAY 13 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 13 · Fri Nov 13</div>
+    <div>
+      <h3 class="day-title">Guandu Temple · Beitou Hot Springs · Xinsheng Park Roses · Golden Horse Film</h3>
+      <div>
+        <span class="tag tag-new">Guandu added</span>
+        <span class="tag tag-fest">🌹 Rose Exhibition</span>
+        <span class="tag tag-fest">🎬 Golden Horse</span>
+        <span class="tag tag-route">Zone: North → Center on Red Line</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Temple</div>
+        <div class="tl-text"><strong>MRT Red Line to Xinbeitou → transfer to Guandu line → Guandu station.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Guandu Temple 關渡宮</div>
+          <div class="place-meta">
+            <span>📍 Guandu, Beitou District</span>
+            <span>🕐 Open daily 6am–9pm</span>
+            <span>💰 Free</span>
+            <span>🚇 Guandu MRT (Red Line, end of the Xinbeitou branch)</span>
+          </div>
+          <div class="place-desc">One of the most dramatically situated temples in all of Taiwan — a 1661 Matsu temple built directly into the face of a cliff above the Tamsui River, where the river bends toward the sea. The main temple hall fronts the water; behind it, a winding cave tunnel carved into the rock interior passes through a series of small shrines, altars, and stone-carved reliefs in near-darkness before emerging on the other side of the cliff into a manicured garden with pruned trees and harbor views below. The transition from sunlit incense-filled temple courtyard into a rock-carved underground passage into a secret cliff garden is one of the most surprising architectural sequences in Taipei.<br><br>
+          <strong>Guandu Wharf</strong> is a 10-minute walk downhill from the temple — a quiet riverside pier with morning food stalls, bamboo fishing rafts, and views over the Tamsui River wetlands toward the sea. Very local, very unhurried.</div>
+          <div class="place-tip">Walk through the cave passage even if you're not religious — the transition from the incense-smoky outer hall through the carved rock interior is extraordinary. Allow 45 minutes for the full temple complex and 30 minutes at the wharf.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-hike">Hot Springs</div>
+        <div class="tl-text"><strong>MRT back one stop to Xinbeitou → Beitou Hot Spring district.</strong> Walk through Beitou Park down to the hot spring valley: the <strong>Beitou Hot Spring Museum</strong> (1913 Japanese-era wooden building, free, beautiful Meiji-era architecture), then the <strong>public foot-soaking pool</strong> in the park — free, naturally geothermal, wooden benches, elderly locals and children alike. The <strong>Beitou Public Library</strong> just above (5-min walk) is worth a quick look: a gorgeous green-certified wooden structure that won architecture awards and looks like it was grown from the forest around it. A calm, beautiful hour.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">2:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Park</div>
+        <div class="tl-text"><strong>MRT south to Zhongshan Junior High → Xinsheng Park Rose Exhibition.</strong></div>
+        <div class="place-card">
+          <div class="place-name">Xinsheng Park Rose Exhibition 新生公園玫瑰花展</div>
+          <div class="place-meta">
+            <span>📍 Xinsheng N. Road, Zhongshan District</span>
+            <span>🕐 Open during daylight</span>
+            <span>💰 Free</span>
+          </div>
+          <div class="place-desc">A free outdoor rose exhibition in full bloom by mid-November — hundreds of rose varieties in a relaxed park setting, beautiful for an afternoon wander. Combines easily with a browse along the <strong>Zhongshan indie strip</strong> (Zhongshan N. Road): a tree-lined pedestrian-friendly boulevard with independent concept stores, gallery spaces, and the city's best selection of international design boutiques. Queer-friendly neighborhood — the café and bar scene here is quieter and more artsy than Ximending.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-fest"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-fest">Festival</div>
+        <div class="tl-text"><strong>Golden Horse Film Festival — evening screening.</strong></div>
+        <div class="fest-box">
+          <div class="fest-head">🎬 Golden Horse Film Festival</div>
+          This is your last proper night for a screening — the festival runs through Nov 22, well past your departure. Book tickets in advance at <strong>goldenhorse.org.tw</strong> (English interface available). The <em>Queer Utopia</em> programme is the one to prioritize given your interests — it typically screens films from Taiwan, Hong Kong, and Southeast Asia exploring LGBTQ+ identity. Most international films have English or Traditional Chinese subtitles. Cinemas are scattered around central Taipei; the main venues are in the Ximending/Ximen area and near Zhongxiao Dunhua.
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Last Taipei Night</div>
+        <div class="tl-text">Final Taipei dinner on your own schedule — <strong>Liu Shandong beef noodle soup</strong> (劉山東, near Ximen MRT, closes late) is a Taipei institution. Or a last wander through Ximending and the Red House plaza. Then: <strong>pack your bags tonight.</strong> Tomorrow morning has a tight but achievable schedule before the airport.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row col2">
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Guandu_Temple_Taipei.jpg/800px-Guandu_Temple_Taipei.jpg" alt="Guandu Temple" onerror="this.src='https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800'">
+      <div class="img-cap">GUANDU TEMPLE (1661) — BUILT INTO A CLIFF, WITH A CARVED CAVE TUNNEL THROUGH THE ROCK BEHIND IT</div>
+    </div>
+    <div class="img-wrap tall">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Beitou_Hot_Spring_Museum_Taiwan.jpg/800px-Beitou_Hot_Spring_Museum_Taiwan.jpg" alt="Beitou Hot Spring Museum" onerror="this.src='https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=800'">
+      <div class="img-cap">BEITOU HOT SPRING MUSEUM — 1913 JAPANESE-ERA MEIJI WOODEN BUILDING, FREE TO ENTER</div>
+    </div>
+  </div>
+
+  <div class="route-note">Guandu (north, end of Red Line branch) → Xinbeitou (1 stop south) → MRT south to Zhongshan Junior High (Xinsheng Park) → center for Golden Horse screening. All trending southward on the same MRT line — one clean sweep.</div>
+</div>
+
+<!-- DAY 14 -->
+<div class="day-section">
+  <div class="day-header">
+    <div class="day-number">Day 14 · Sat Nov 14</div>
+    <div>
+      <h3 class="day-title">Jianguo Weekend Flea Market → Airport MRT → Depart 11am</h3>
+      <div>
+        <span class="tag tag-warn">Depart 11am — timing is tight but works</span>
+        <span class="tag tag-new">Your only Saturday flea market window of the entire trip</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>Timing note:</strong> This works — but requires bags packed the night before and a disciplined departure from the market by 8:30am. The math: Jianguo Market (vendors set up from 7:30am) → browse 1 hour → MRT Da'an to Taipei Main Station (10 min) → Airport MRT (35 min) → arrive TPE by 9:30am → check in and clear security by 10:15am → 11am flight. Do not linger at the market past 8:30am.
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">6:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Morning</div>
+        <div class="tl-text">Wake up. Bags already packed from last night. Hotel checkout or leave bags at reception if they'll hold them (they will — standard practice). Quick convenience store breakfast.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-shop">Flea Market <i>*MIGHT HAVE TO SKIP</i></div>
+        <div class="tl-text"><strong>Jianguo Weekend Jade + Flower + Flea Market</strong> — MRT to Da'an station, 5-min walk.</div>
+        <div class="place-card">
+          <div class="place-name">Jianguo Weekend Flea Market 建國假日玉市 / 花市</div>
+          <div class="place-meta">
+            <span>📍 Under the Jianguo Elevated Highway, Da'an District</span>
+            <span>🕐 Saturday &amp; Sunday only, 9am–6pm (vendors begin setting up from 7:30am)</span>
+          </div>
+          <div class="place-desc">Running under the Jianguo elevated highway for over 40 years — two parallel markets: the <strong>Jade Market</strong> on one side (antique and contemporary jade jewelry, carvings, raw stones, collectibles — haggling expected and welcomed) and the <strong>Flower/Flea Market</strong> on the other (antiques, vintage goods, art prints, secondhand books, plants, ceramics, old cameras, folk art). This is Taipei's most dedicated flea market experience — not a tourist market but a genuine local institution where dealers set up the same spots every weekend. The jade section in particular has extraordinary pieces at prices that would be 10x in the West if you know what you're looking for. Antique Taiwanese ceramics, old deity figurines, retro posters, and 1970s photography equipment are all findable with patient looking.</div>
+          <div class="place-tip">Go straight to the jade section when vendors are still setting up (7:30–8am) for the least competitive browsing. The flower section is more relaxed and great for art prints and vintage oddities.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Depart Market</div>
+        <div class="tl-text"><strong>Leave the market by 8:30am.</strong> MRT from Da'an station to Taipei Main Station (Green Line, 3 stops, ~10 min). Walk to Airport MRT platform.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:45am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Airport MRT</div>
+        <div class="tl-text"><strong>Airport MRT from Taipei Main Station → TPE</strong> (35 min, every 15 min, NT$160). Arrive at the airport by 9:30am.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:30am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-food"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Final Ritual</div>
+        <div class="tl-text"><strong>One last 7-Eleven run in the airport</strong> — onigiri, milk tea, and maybe a steamed bun for the plane. The same convenience store item that greeted you on Night 1 sends you off on Day 14. Check in, clear security by 10:15am. Board.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-transit"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-transit">Departure</div>
+        <div class="tl-text"><strong>Flight departs TPE, 11:00am.</strong> Taiwan will see you again.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== QUICK REFERENCE ==================== -->
+<div style="padding: 40px 60px; background: #1a1a2e; color: white;">
+  <h2 style="font-size:24px; font-weight:normal; color: #c8a84b; margin-bottom: 24px;">Quick Reference — Night Markets by Day</h2>
+  <table class="quick-ref" style="color: white;">
+    <thead>
+      <tr>
+        <th style="background:#c8a84b; color: #1a1a2e;">Day</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">Date</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">City</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">Night Market</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">Notes</th>
+      </tr>
+    </thead>
+    <tbody style="color: #ddd;">
+      <tr><td>2</td><td>Mon Nov 2</td><td>Taipei</td><td style="color:#c8a84b; font-weight:bold;">—</td><td>Red House evening instead</td></tr>
+      <tr><td>3</td><td>Tue Nov 3</td><td>Taipei</td><td style="color:#c8a84b; font-weight:bold;">Raohe Night Market</td><td>Black pepper buns at temple entrance</td></tr>
+      <tr><td>4</td><td>Wed Nov 4</td><td>Taipei</td><td style="color:#c8a84b; font-weight:bold;">Ningxia Night Market</td><td>Classic Taiwanese snacks, compact + local</td></tr>
+      <tr><td>7</td><td>Sat Nov 7</td><td>Tainan</td><td style="color:#c8a84b; font-weight:bold;">Garden Night Market OR Jazz Fest</td><td>Taxi between if splitting the night</td></tr>
+      <tr><td>8</td><td>Sun Nov 8</td><td>Tainan</td><td style="color:#c8a84b; font-weight:bold;">Garden Night Market</td><td>Largest in Tainan, open Sun, most festive</td></tr>
+      <tr><td>9</td><td>Mon Nov 9</td><td>Kaohsiung</td><td style="color:#c8a84b; font-weight:bold;">Liuhe Night Market</td><td>Easy, near hotel, great seafood</td></tr>
+      <tr><td>10</td><td>Tue Nov 10</td><td>Kaohsiung</td><td style="color:#c8a84b; font-weight:bold;">Ruifeng Night Market</td><td>The one locals go to — open Tue ✓</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size:24px; font-weight:normal; color: #c8a84b; margin-top: 40px; margin-bottom: 24px;">Transit Cheat Sheet</h2>
+  <table class="quick-ref" style="color: white;">
+    <thead>
+      <tr>
+        <th style="background:#c8a84b; color: #1a1a2e;">Journey</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">Method</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">Time</th>
+        <th style="background:#c8a84b; color: #1a1a2e;">Cost</th>
+      </tr>
+    </thead>
+    <tbody style="color: #ddd;">
+      <tr><td>TPE Airport → Ximending</td><td>Airport MRT + walk/MRT 1 stop</td><td>~50 min</td><td>NT$160</td></tr>
+      <tr><td>Taipei → Tainan</td><td>HSR (book via THSR app)</td><td>1h 40m</td><td>NT$1,350</td></tr>
+      <tr><td>Tainan → Kaohsiung</td><td>TRA regular train</td><td>30 min</td><td>NT$69</td></tr>
+      <tr><td>Kaohsiung → Taipei</td><td>HSR from Zuoying station</td><td>1h 30m</td><td>NT$1,490</td></tr>
+      <tr><td>Taipei Main → TPE Airport</td><td>Airport MRT (every 15 min)</td><td>35 min</td><td>NT$160</td></tr>
+      <tr><td>Cijin Island ferry (Kaohsiung)</td><td>Ferry from Gushan Pier</td><td>10 min</td><td>NT$30</td></tr>
+      <tr><td>Taipei → Yangmingshan</td><td>Bus from Jiantan MRT</td><td>~40 min</td><td>NT$15</td></tr>
+      <tr><td>Taipei → Jiufen</td><td>Bus from Taipei Main Station</td><td>~60 min</td><td>NT$95</td></tr>
+      <tr><td>YouBike rental (any city)</td><td>EasyCard tap at station</td><td>—</td><td>NT$20 / 30 min</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size:24px; font-weight:normal; color: #c8a84b; margin-top: 40px; margin-bottom: 20px;">Key Phrases (Mandarin)</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-family: Arial, sans-serif; font-size: 13px;">
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Xiè xiè</strong> 謝謝 — Thank you</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Duō shǎo qián?</strong> 多少錢？— How much?</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Wǒ yào zhège</strong> 我要這個 — I want this one</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Wèishēngjiān zài nǎlǐ?</strong> 廁所在哪裡？— Where is the toilet?</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Tài guì le</strong> 太貴了 — Too expensive (for negotiating)</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Bù là</strong> 不辣 — Not spicy</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Wǒ shì sùshí zhǔyìzhě</strong> 我是素食主義者 — I'm vegetarian</div>
+    <div style="background: rgba(255,255,255,0.07); padding: 10px 14px; border-radius: 4px;"><strong style="color:#c8a84b;">Yīgè rén</strong> 一個人 — One person (for tables)</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="background: var(--taipei); color: rgba(255,255,255,0.5); padding: 30px 60px; font-family: Arial, sans-serif; font-size: 12px; text-align: center;">
+  <div style="color: var(--accent); font-size: 14px; margin-bottom: 8px;">Taiwan · November 1–14, 2026</div>
+  Taipei · Tainan · Kaohsiung &nbsp;·&nbsp; Generated June 2026 &nbsp;·&nbsp; Always verify hours and prices locally before visiting
+</div>
+
+</body>
+</html>
