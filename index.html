@@ -98,6 +98,25 @@
   .city-name { font-size: 36px; font-weight: normal; margin-bottom: 8px; }
   .city-dates { font-family: Arial, sans-serif; font-size: 14px; color: var(--muted); margin-bottom: 14px; }
   .city-intro { font-size: 15px; line-height: 1.8; color: var(--text); max-width: 700px; }
+  .hotel-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+  .hotel-name { font-size: 15px; font-weight: bold; color: var(--text); margin-bottom: 2px; }
+  .hotel-room { font-family: Arial, sans-serif; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .hotel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; font-family: Arial, sans-serif; font-size: 12px; }
+  .hotel-grid div { color: var(--muted); }
+  .hotel-grid strong { color: var(--text); font-weight: normal; }
+  .hotel-walk {
+    margin-top: 9px; padding-top: 9px; border-top: 1px dashed var(--border);
+    font-family: Arial, sans-serif; font-size: 12px; color: var(--muted); line-height: 1.6;
+  }
+  @media (max-width: 640px) { .hotel-grid { grid-template-columns: 1fr; gap: 4px; } }
+
   .city-stay {
     display: inline-block;
     margin-top: 14px;
@@ -394,7 +413,261 @@
 
   img { background: #e8e4db; }
   img[src=""], img:not([src]) { display: none; }
+
+  /* ═══════════ MOBILE + SCANNABILITY LAYER ═══════════ */
+
+  /* Sticky day navigation */
+  #daynav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #daynav::-webkit-scrollbar { display: none; }
+  .daynav-inner {
+    display: flex;
+    gap: 6px;
+    padding: 0 16px;
+    min-width: max-content;
+  }
+  .daynav-btn {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--light);
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .daynav-btn.tp { border-color: #b8cde0; color: var(--taipei); background: #f0f4f8; }
+  .daynav-btn.tn { border-color: #e0cdb0; color: var(--tainan); background: #faf5ee; }
+  .daynav-btn.kh { border-color: #b8d0b5; color: var(--kaohsiung); background: #f0f5f0; }
+
+  /* Collapsible day sections */
+  details.day-wrap { border-bottom: 1px solid var(--border); }
+  details.day-wrap > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 60px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    transition: background .12s;
+  }
+  details.day-wrap > summary::-webkit-details-marker { display: none; }
+  details.day-wrap > summary:hover { background: var(--light); }
+  details.day-wrap[open] > summary { background: var(--light); border-bottom: 1px solid var(--border); }
+  .sum-chev {
+    font-size: 15px;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform .2s;
+    width: 14px;
+  }
+  details.day-wrap[open] .sum-chev { transform: rotate(90deg); }
+  .sum-body { flex: 1; min-width: 0; }
+  .sum-date {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .sum-title {
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .sum-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sum-chip {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: var(--light);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* Collapsible place cards */
+  .place-card > .place-desc,
+  .place-card > .place-tip { display: block; }
+  .pc-toggle {
+    display: none;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    color: var(--taipei);
+    background: none;
+    border: none;
+    padding: 6px 0 0;
+    cursor: pointer;
+  }
+
+  /* Expand/collapse all control */
+  .allctl {
+    display: flex;
+    gap: 8px;
+    padding: 12px 60px;
+    background: var(--light);
+    border-bottom: 1px solid var(--border);
+  }
+  .allctl button {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    padding: 7px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .allctl button:active { background: var(--border); }
+
+  /* ═══ TABLET ═══ */
+  @media (max-width: 900px) {
+    .prac-grid { grid-template-columns: 1fr 1fr; }
+    .fest-grid { grid-template-columns: 1fr; }
+    .img-row.col3 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ═══ MOBILE ═══ */
+  @media (max-width: 640px) {
+    body { font-size: 15px; }
+
+    .cover { padding: 40px 18px 32px; }
+    .cover-title { font-size: 34px; }
+    .cover-subtitle { font-size: 16px; margin-bottom: 24px; }
+    .cover-meta { gap: 18px; }
+
+    .key-bar { padding: 12px 18px; gap: 10px 14px; }
+
+    .city-header { padding: 30px 18px 22px; border-left-width: 5px; }
+    .city-name { font-size: 27px; }
+    .city-intro { font-size: 14px; }
+    .hotel-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+  .hotel-name { font-size: 15px; font-weight: bold; color: var(--text); margin-bottom: 2px; }
+  .hotel-room { font-family: Arial, sans-serif; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .hotel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; font-family: Arial, sans-serif; font-size: 12px; }
+  .hotel-grid div { color: var(--muted); }
+  .hotel-grid strong { color: var(--text); font-weight: normal; }
+  .hotel-walk {
+    margin-top: 9px; padding-top: 9px; border-top: 1px dashed var(--border);
+    font-family: Arial, sans-serif; font-size: 12px; color: var(--muted); line-height: 1.6;
+  }
+  @media (max-width: 640px) { .hotel-grid { grid-template-columns: 1fr; gap: 4px; } }
+
+  .city-stay { font-size: 12px; padding: 10px 12px; }
+
+    details.day-wrap > summary { padding: 16px 18px; gap: 10px; }
+    .sum-title { font-size: 15px; }
+
+    .allctl { padding: 10px 18px; }
+    .day-section { padding: 20px 18px 30px; }
+
+    .day-header { gap: 10px; margin-bottom: 18px; }
+    .day-title { font-size: 19px; }
+
+    /* Timeline reflows to stacked on mobile */
+    .tl-item {
+      grid-template-columns: 10px 1fr;
+      gap: 0 12px;
+      margin-bottom: 22px;
+    }
+    .tl-time {
+      grid-column: 1 / -1;
+      text-align: left;
+      font-size: 12px;
+      margin-bottom: 5px;
+      padding-left: 22px;
+    }
+    .tl-dot-col { grid-column: 1; }
+    .tl-content { grid-column: 2; }
+    .tl-text { font-size: 14px; }
+
+    .place-card { padding: 13px 14px; }
+    .place-name { font-size: 14px; }
+    .place-meta { flex-direction: column; gap: 3px; font-size: 11px; }
+    .place-desc { font-size: 13px; }
+
+    /* Collapse long descriptions on mobile */
+    .place-card.collapsible .place-desc {
+      max-height: 4.9em;
+      overflow: hidden;
+      position: relative;
+      transition: max-height .25s ease;
+    }
+    .place-card.collapsible .place-desc::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1.8em;
+      background: linear-gradient(transparent, var(--light));
+    }
+    .place-card.collapsible.open .place-desc { max-height: 300em; }
+    .place-card.collapsible.open .place-desc::after { display: none; }
+    .place-card.collapsible .place-tip { display: none; }
+    .place-card.collapsible.open .place-tip { display: block; }
+    .pc-toggle { display: block; }
+
+    .img-row { gap: 8px; margin: 14px 0; }
+    .img-row.col2, .img-row.col3 { grid-template-columns: 1fr; }
+    .img-wrap img, .img-wrap.tall img { height: 190px; }
+    .img-cap { font-size: 9px; }
+
+    .tip-box, .warn-box, .fest-box, .route-note { font-size: 12px; padding: 10px 12px; }
+
+    .festivals-intro { padding: 28px 18px; }
+    .festivals-intro h2 { font-size: 21px; }
+    .fest-grid { grid-template-columns: 1fr; gap: 12px; }
+
+    .practical { padding: 28px 18px; }
+    .prac-grid { grid-template-columns: 1fr; gap: 20px; }
+
+    .divider { margin: 0 18px; }
+
+    /* Tables scroll horizontally */
+    .quick-ref { font-size: 11px; display: block; overflow-x: auto; white-space: nowrap; }
+    .quick-ref th, .quick-ref td { padding: 7px 9px; }
+  }
+
+  @media (max-width: 400px) {
+    .cover-title { font-size: 29px; }
+    .city-name { font-size: 24px; }
+  }
+
   @media print {
+    #daynav, .allctl, .pc-toggle { display: none !important; }
+    details.day-wrap > summary { display: none; }
+    details.day-wrap > *:not(summary) { display: block !important; }
+    .place-card.collapsible .place-desc { max-height: none !important; }
+    .place-card.collapsible .place-tip { display: block !important; }
     .city-header, .day-section { page-break-inside: avoid; }
     .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
@@ -478,7 +751,8 @@
         <strong>EasyCard</strong> — pick up at the airport on arrival. Works on every MRT, all city buses, YouBike rentals, and convenience store payments. Top up at any MRT station or 7-Eleven.<br><br>
         <strong>Airport MRT</strong> — direct from TPE to Taipei Main Station, 35 min, NT$160. Runs every 15 min.<br><br>
         <strong>HSR (High Speed Rail)</strong> — book in advance via the THSR app (in English). Taipei→Tainan 1h40m (NT$1,350), Tainan→Kaohsiung 30 min by TRA regular train (NT$69).<br><br>
-        <strong>Kaohsiung</strong> has its own MRT + LRT light rail. The Red Line is a single straight north-south line — very easy to navigate.
+        <strong>Kaohsiung</strong> has its own MRT + LRT light rail. The Red Line is a single straight north-south line — very easy to navigate.<br><br>
+        <strong>Groceries:</strong> <em>PX Mart (全聯)</em> is the local everyday chain — cheapest place for pineapple cakes, nougat, dried fruit, and instant noodles as gifts. Branches everywhere. <em>Carrefour (家樂福)</em> is bigger with more imports. Note: you bag your own groceries after paying at a separate counter.
       </div>
     </div>
     <div class="prac-item">
@@ -511,7 +785,18 @@
   <h2 class="city-name">Taipei</h2>
   <p class="city-dates">November 1–6 · 5 nights · arrival 9pm Nov 1</p>
   <p class="city-intro">Taiwan's capital is a city of effortless layers — volcanic mountains rising above neon-lit night markets, one of Asia's most vibrant queer scenes anchored around the Red House in Ximending, and a constellation of hiking trails that put you above the skyline in under an hour. Taipei rewards wandering: every block has a temple alley, a craft café, or a mural you didn't expect. Staying in Ximending puts you at the centre of the queer scene, two minutes from the Red House, and one MRT stop from the airport train.</p>
-  <div class="city-stay"><strong>Stay:</strong> Ximending district — amba Taipei Ximending (mid-range, NT$3,500–6,000) · Comma Boutique Hotel (artsy, rooftop balcony) · CityInn Hotel Plus Ximending (budget, NT$1,500–2,500) · All within 10-min walk of Red House &amp; Ximen MRT</div>
+  <div class="hotel-block">
+    <div class="hotel-name">🏨 Comma Boutique Hotel — BOOKED</div>
+    <div class="hotel-room">Elite Room · Booking ID 1020759778</div>
+    <div class="hotel-grid">
+      <div><strong>Address:</strong> No. 77 Xining Rd, Wanhua District</div>
+      <div><strong>Check in:</strong> Sun Nov 1 (from 3pm)</div>
+      <div><strong>Nearest MRT:</strong> Ximen (440m) · Beimen (500m)</div>
+      <div><strong>Check out:</strong> Fri Nov 6 (by 11am)</div>
+    </div>
+    <div class="hotel-walk"><strong>Walking distance from your door:</strong> Red House and the queer bar plaza 7 min · Ximending pedestrian zone 3 min · Huaxi Night Market 12 min · Longshan Temple + Bopiliao 15–18 min · Taipei Main Station 12 min · 228 Peace Park 18 min. You are in the middle of the Wanhua cluster — Days 2 and 5 barely need the MRT.
+    <br><br>Rooftop terrace and a 24-hr lounge with free coffee. Luggage storage is available on Nov 6 after checkout, which the Day 6 plan depends on.</div>
+  </div>
 </div>
 
 <!-- DAY 1 -->
@@ -528,7 +813,7 @@
   </div>
 
   <div class="warn-box">
-    <strong>Arrival note:</strong> Landing at 9pm means customs, luggage, and the airport MRT will get you to Ximending around 10:30–11pm. Keep tonight easy — you have 13 big days ahead.
+    <strong>Arrival note:</strong> Landing at 9pm means customs, luggage, and the airport MRT will get you to Comma Boutique around 10:30–11pm. The front desk is 24-hour, so a late arrival is no problem. Keep tonight easy — you have 13 big days ahead. From the hotel it's a 7-minute walk to the Red House.
   </div>
 
   <div class="timeline" style="margin-top:24px">
@@ -576,7 +861,7 @@
   <div class="day-header">
     <div class="day-number">Day 2 · Mon Nov 2</div>
     <div>
-      <h3 class="day-title">Longshan Temple · Bopiliao · Outdoor Gear · Cinema Park · Red House</h3>
+      <h3 class="day-title">Longshan Temple · Bopiliao · 228 Park · Outdoor Gear · Red House · Huaxi</h3>
       <div>
         <span class="tag tag-new">Must-add: Longshan + Bopiliao</span>
         <span class="tag tag-route">Zone: Wanhua → Ximending</span>
@@ -586,21 +871,12 @@
 
   <div class="timeline">
     <div class="tl-item">
-      <div class="tl-time">7:00am</div>
+      <div class="tl-time">7:15am</div>
       <div class="tl-dot-col"><div class="tl-dot bg-food"></div><div class="tl-line"></div></div>
       <div class="tl-content">
-        <div class="tl-label c-food">Breakfast · Essential</div>
-        <div class="tl-text"><strong>Yong He Soy Milk King 永和豆漿大王</strong> — No. 102, Section 2, Fuxing S. Rd, Da'an District. 10-min walk or 1 MRT stop from Ximending toward Longshan Temple.</div>
-        <div class="place-card">
-          <div class="place-name">Yong He Soy Milk King 永和豆漿大王 (Da'an)</div>
-          <div class="place-meta">
-            <span>📍 No. 102, Sec. 2, Fuxing S. Rd, Da'an District</span>
-            <span>🕐 5am–1:30pm daily</span>
-            <span>💰 NT$20–80 per item</span>
-          </div>
-          <div class="place-desc">Your first proper Taiwanese breakfast — and the right one. Yong He is the original template for traditional Taiwanese morning food: <strong>salty soy milk (鹹豆漿)</strong> — warm, savory, with dried shrimp, preserved vegetable, fried dough, and vinegar curdling it into a silky soup that's unlike anything you've had; <strong>youtiao (油條)</strong> — long, airy fried dough sticks served hot and crispy; <strong>dan bing (蛋餅)</strong> — thin egg crepe, savory and soft; <strong>radish cake (蘿蔔糕)</strong> — pan-fried with optional egg, deeply satisfying. English menu posted clearly. Order at the counter, pay, find a seat (share tables freely — everyone does). This is the whole Taiwanese breakfast experience in one place, for under NT$150 per person.</div>
-          <div class="place-tip">Go sweet soy milk OR salty soy milk — the salty version is the more interesting one if you haven't had it before. The youtiao dipped into either is mandatory.</div>
-        </div>
+        <div class="tl-label c-food">Breakfast</div>
+        <div class="tl-text">Breakfast near the hotel in Wanhua rather than crossing town. Look for any shop with a <strong>豆漿</strong> sign — soy milk, youtiao (fried dough sticks), dan bing (egg crepe), and radish cake are the standard set, and every neighbourhood has a good one. Under NT$150 for two.</div>
+        <div class="tl-detail">You'll get the full soy-milk-shop experience at Yong He on Day 3, which passes right by it in Da'an. No need to detour east this morning.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -680,8 +956,9 @@
       <div class="tl-time">2:00pm</div>
       <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
       <div class="tl-content">
-        <div class="tl-label c-art">Street Art</div>
-        <div class="tl-text"><strong>Taipei Cinema Park</strong> and <strong>America Street</strong> in Ximending — large-scale murals, graffiti-style public art, skate culture energy. America Street (美國街) has more artwork, vintage stores, and counterculture shops. Both are within the Ximending pedestrian zone, easy to fold into a wander.</div>
+        <div class="tl-label c-art">Rest + Street Art</div>
+        <div class="tl-text">Back to the hotel to drop the gear and rest for an hour — you've been going since 7am and there's a late night ahead. Then a slow wander through <strong>Taipei Cinema Park</strong> and <strong>America Street</strong> (美國街), both a few minutes from your door: large-scale murals, graffiti, skate culture, vintage stores, counterculture shops.</div>
+        <div class="tl-detail">These are on your doorstep for five nights — no need to force them into a schedule. Drift through whenever you're passing.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -689,7 +966,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-queer"></div></div>
       <div class="tl-content">
         <div class="tl-label c-queer">Evening</div>
-        <div class="tl-text"><strong>Red House plaza</strong> evening scene — outdoor bar terraces fill up, rainbow flags, community energy. <strong>HERO Bar</strong> or <strong>Secret Garden</strong> for drinks. <strong>Café Dalida</strong> is the cornerstone — birthplace of drag in Taipei, with an open-air terrace perfect for people-watching. If you want to dance, <strong>Taboo</strong> in Zhongshan opens Wednesday nights.</div>
+        <div class="tl-text"><strong>Red House plaza</strong> — tonight try the venues you didn't hit on arrival night. <strong>HERO Bar</strong> (high-energy, younger crowd, music), <strong>Secret Garden</strong> (quieter, good for conversation), or <strong>Commander D</strong> (bear/leather-leaning, friendly). The whole north plaza is a connected outdoor terrace scene — bar-hop freely, nobody minds. If you want to dance, <strong>Taboo</strong> in Zhongshan is the main club.</div>
         <div class="fest-box">
           <div class="fest-head">🎬 Golden Horse Film Festival</div>
           The festival opens today (Nov 6 in Taipei — you'll be on the HSR south, but screenings started). Check goldenhorse.org.tw for this evening's program at Taipei cinemas. The <em>Queer Utopia</em> section is worth noting for your return days.
@@ -748,6 +1025,24 @@
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">8:00am</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-food">Breakfast</div>
+        <div class="tl-text"><strong>Yong He Soy Milk King 永和豆漿大王</strong> — No. 102, Sec. 2, Fuxing S. Rd, Da'an. Open from 5am, so hit it early on the way east.</div>
+        <div class="place-card">
+          <div class="place-name">Yong He Soy Milk King 永和豆漿大王</div>
+          <div class="place-meta">
+            <span>📍 No. 102, Sec. 2, Fuxing S. Rd, Da'an District</span>
+            <span>🕐 5am–1:30pm daily</span>
+            <span>💰 NT$20–80 per item · under NT$150 for two</span>
+          </div>
+          <div class="place-desc">The original template for traditional Taiwanese breakfast. <strong>Salty soy milk (鹹豆漿)</strong> is the one to order if you've never had it — warm soy milk with dried shrimp, preserved vegetable, and vinegar that curdles it into a silky savoury soup, topped with crispy fried dough. Also: <strong>youtiao (油條)</strong>, long airy fried dough sticks served hot; <strong>dan bing (蛋餅)</strong>, a soft savoury egg crepe; and <strong>radish cake (蘿蔔糕)</strong> pan-fried with egg. English menu posted. Order at the counter, pay, then find a seat — sharing tables is normal.</div>
+          <div class="place-tip">Dip the youtiao straight into the soy milk. That's the whole point of the dish.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:15am</div>
       <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-culture">Temple · Trail Start</div>
@@ -820,32 +1115,11 @@
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-time">5:30pm</div>
-      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <div class="tl-label c-culture">Temple + Sunset View · Optional</div>
-        <div class="tl-text"><strong>Bishanyan Kaizhang Shengwang Temple</strong> — MRT Brown Line to Neihu, then bus S2 (8 min) to the Bishanyan stop.</div>
-        <div class="place-card">
-          <div class="place-name">Bishanyan Kaizhang Shengwang Temple 碧山巖開漳聖王廟</div>
-          <div class="place-meta">
-            <span>📍 Mt. Bishan, Neihu District</span>
-            <span>🕐 Open daily 5am–9:30pm</span>
-            <span>💰 Free</span>
-            <span>🚇 MRT Brown Line to Neihu → Bus S2 to Bishanyan stop (~8 min)</span>
-          </div>
-          <div class="place-desc">One of Taipei's most visually striking temples and one of its least-known great viewpoints. Built in 1751 on the summit of Mt. Bishan in Neihu, the temple is dedicated to Chen Yuan-Kuang — a Tang Dynasty general revered as a patron saint by Fujianese settlers — and its architecture is extraordinary: vivid painted murals across every beam, hand-carved dragons coiling along the roof ridges, and intricate tilework covering the entire complex in an explosion of color. But the real revelation is the <strong>panoramic viewing platform</strong>: from the balcony in front of the main hall you look out over the entire Taipei Basin — Taipei 101 directly ahead, the Grand Hotel to the northwest, Songshan Airport to the northeast, the Keelung River winding below, and on clear days the mountains all the way to the coast. It's a completely different angle from Elephant Mountain, and arguably more dramatic because you're surrounded by forest rather than city.<br><br>
-          The best time to visit is the <strong>hour before sunset</strong>: the sky transitions from blue to gold to pink above downtown Taipei, and the city lights begin coming on as you watch. After dark the city lights spread out like a circuit board — stunning and entirely free.</div>
-          <div class="place-tip">Arrive at least 1.5 hrs before sunset on weekends for a good railing spot. Weekday afternoons are much quieter. There's a small café inside the temple (donation-based coffee) with the same view.</div>
-          <div class="place-tip">The S2 shuttle bus from Neihu MRT is the easiest approach — winds up the mountain road and drops you at the temple entrance. The bus driver handles the hairpin curves with cheerful confidence.</div>
-        </div>
-      </div>
-    </div>
-    <div class="tl-item">
       <div class="tl-time">7:30pm</div>
       <div class="tl-dot-col"><div class="tl-dot bg-food"></div></div>
       <div class="tl-content">
         <div class="tl-label c-food">Night Market</div>
-        <div class="tl-text"><strong>Raohe Night Market</strong> (饒河夜市) — MRT to Songshan station, 1 stop. (If skipping Bishanyan, start Raohe earlier at 6pm.)</div>
+        <div class="tl-text"><strong>Songshan Ciyou Temple, then Raohe Night Market</strong> — you finish the day back where you started this morning. Arrive at the Ciyou Temple end around dusk.</div>
         <div class="place-card">
           <div class="place-name">Songshan Ciyou Temple 松山慈祐宮 — Lanterns First</div>
           <div class="place-meta">
@@ -881,10 +1155,9 @@
     </div>
   </div>
 
-  <div class="route-note">Fangtian Temple (taxi/bus from Ximending) → Four Beasts ridge hike → descend to Xiangshan MRT → MRT to Dongmen (Yongkang St + Da'an Park) → MRT to Songshan (Ciyou Temple + Raohe). All flows east-to-west-to-east on the Red and Green Lines — one arc, no backtracking.</div>
+  <div class="route-note">Yong He (Da'an, breakfast) → Fangtian Temple → Four Beasts ridge → descend at Xiangshan MRT → Dongmen for Yongkang St + Da'an Park → Songshan for Ciyou Temple + Raohe. A single eastern loop. <strong>Realistic load:</strong> the hike is 3 hrs and this is your second full day — the Yongkang/Da'an Park afternoon is deliberately unstructured so you can sit down as long as you want.</div>
 </div>
-</body>
-</html>
+
 
 <!-- DAY 4 -->
 <div class="day-section">
@@ -1037,6 +1310,19 @@
           The Jinguashi Gold Ecological Park itself is fascinating — the remains of a former Japanese-era gold mine with preserved infrastructure, a museum, and a free touchable gold bar (the largest single piece you can legally touch in the world at 220kg).</div>
           <div class="place-tip">The cave passage through the "teapot" requires some scrambling and ducking — not technical, but not for anyone with claustrophobia. The longer Banpingshan extension (adds 1 hr, more scrambling, ropes on cliff sections) is spectacular if you want more challenge.</div>
         </div>
+        <div class="place-card">
+          <div class="place-name">Golden Waterfall 黃金瀑布</div>
+          <div class="place-meta">
+            <span>📍 Jinguashi — on the road below Teapot Mountain</span>
+            <span>🕐 Always open</span>
+            <span>💰 Free</span>
+            <span>⏱ 15–20 min stop</span>
+          </div>
+          <div class="place-desc">A short walk downhill from the Teapot Mountain trailhead, and completely on your way — no detour required. The Golden Waterfall isn't a lush jungle cascade; it's something stranger and more striking. Water flows over a broad rock face stained brilliant gold-orange by iron and copper deposits leaching from the old mine workings above. The result looks less like a waterfall than a sheet of molten metal running down the mountainside, set against green hills with the Pacific visible beyond. It's the same mineral process that creates the Yin-Yang Sea below — you can see both within a few minutes of each other, which makes the whole geology legible in a way that's genuinely fascinating.<br><br>
+          It's a roadside stop rather than a hike, and photographers love it for exactly that reason: dramatic, accessible, and unlike any other waterfall you'll see. Late afternoon light makes the gold tones most intense.</div>
+          <div class="place-tip">Don't swim or wade — the water is heavily mineralized and acidic. This is a look-and-photograph stop.</div>
+          <div class="place-tip">The bus between Jinguashi and Jiufen passes right by. Ask the driver for 黃金瀑布 (Huángjīn Pùbù) if you want to be dropped there, or just walk down from the Gold Ecological Park in about 15 minutes.</div>
+        </div>
       </div>
     </div>
     <div class="tl-item">
@@ -1076,6 +1362,11 @@
     </div>
   </div>
 
+  <div class="tip-box">
+    <div class="tip-head">Want a bigger waterfall day instead?</div>
+    <strong>Sandiaoling Waterfall Trail (三貂嶺瀑布步道)</strong> is the serious option — three waterfalls (Hegu, Motian, Pipa Dong) on a lush forest trail about 2–3 hrs round trip, reached via the Pingxi Branch Line. Take the train from Taipei Main to Ruifang, switch to the Pingxi Line, get off at Sandiaoling (3rd stop). Almost no tourists get off there — it's mostly locals. The trail passes behind Motian Falls on a walkway cut into the rock. To fit it, you'd swap out either Teapot Mountain or the Gold Ecological Park, since doing all three plus Jinguashi makes for a punishing day. A Pingxi Line Day Pass (NT$80) covers unlimited travel on that branch if you want to add Shifen Waterfall too.
+  </div>
+
   <div class="img-row col2">
     <div class="img-wrap">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Jiufen_overview.jpg/800px-Jiufen_overview.jpg" alt="Jiufen Old Street" onerror="this.src='https://images.unsplash.com/photo-1470004914212-05527e49370b?w=800'">
@@ -1107,7 +1398,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-shop"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-shop">Flea Market</div>
-        <div class="tl-text"><strong>Gongguan area</strong> (公館) — MRT to Gongguan station. University neighborhood with secondhand book stalls on the street, vintage clothing vendors, student-run art pop-ups around the MRT exit. The most countercultural, alternative energy of anywhere in Taipei. Good for browsing, not for buying specific things.
+        <div class="tl-text"><strong>Gongguan area</strong> (公館) — MRT to Gongguan station, 10 min from Ximen. University neighborhood with secondhand book stalls on the street, vintage clothing vendors, and student art pop-ups around the MRT exit. The most countercultural corner of Taipei. Browse for an hour, then Treasure Hill, then back for your bags.
         <div class="tl-detail">Tonight being Thursday means <strong>Shida Night Market (師大夜市)</strong> — 10 min walk from Gongguan — is open (Thu–Sun only). Smaller and very student-local, with cheap eats, bubble tea, and the neighborhood energy of NTU. A good alternative evening if you want a fourth night market that's off the tourist map entirely. Swap in for the Tonghua Night Market evening on Day 5 if you prefer. Papaya milk is easy to find here too.</div>
         </div>
       </div>
@@ -1125,8 +1416,9 @@
       <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-transit">HSR South</div>
-        <div class="tl-text"><strong>Check out or store bags → Taipei Main Station → HSR to Tainan</strong>. Book 2–2:30pm departure. 1 hr 40 min journey. Check in to West Central District hotel (walkable to everything) by 4:30–5pm.</div>
-        <div class="tl-detail">HSR tip: the THSR app books in English. Unreserved seats are always available but reserved seats guarantee comfort. Book at least a few days ahead on Fridays.</div>
+        <div class="tl-text"><strong>Comma checkout is 11am</strong> — check out before heading to Gongguan and leave your bags in their storage. Come back for them around 12:30pm, then walk or MRT to Taipei Main Station. Aim for a <strong>1:30–2pm HSR</strong> (1 hr 40 min) to reach Tainan by 3:40pm.</div>
+        <div class="tl-detail">At Tainan HSR, take the free <strong>H31 shuttle</strong> from Exit 2 and get off at "Xiaoximen" — Hotel Cozzi is 100m from that stop. About 25 min. You'll arrive around 4:15pm, just after their 4pm check-in opens. That timing is deliberate: an earlier train means waiting in the lobby.</div>
+        <div class="tl-detail">Book the HSR a few days ahead on the THSR app (English interface) — Friday afternoons sell out of reserved seats.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -1151,7 +1443,19 @@
   <h2 class="city-name">Tainan</h2>
   <p class="city-dates">November 7–9 · 2 nights · arrive evening Nov 6</p>
   <p class="city-intro">Taiwan's oldest city (400+ years) and undisputed food capital. Every street has a temple alley; every alley has a noodle stall. Tainan is where Taiwanese identity is most concentrated — the city has more temples per capita than anywhere in Taiwan, more distinct local dishes than any other city, and a creative, artsy energy that coexists naturally with its historical weight. Unlike Taipei, Tainan rewards slowness. The best moments are found by wandering: pushing through a door you weren't sure about, following lantern light down a lane, sitting at a plastic stool at midnight eating beef soup.</p>
-  <div class="city-stay"><strong>Stay:</strong> West Central District — walking distance to all main sights, Jazz Fest venue, temples, and Shennong St. <strong>Hotel Cozzi Tainan</strong> (mid-range, reliable) · <strong>Wabisabi Hotel</strong> (budget, Japanese capsule aesthetic, near Shennong St). NT$1,200–3,000/night.</div>
+  <div class="hotel-block">
+    <div class="hotel-name">🏨 Hotel Cozzi Ximen Tainan — BOOKED</div>
+    <div class="hotel-room">Comfort King Room · Booking ID 1020759782</div>
+    <div class="hotel-grid">
+      <div><strong>Address:</strong> No. 658-2, Sec. 1 Ximen Rd, West Central District</div>
+      <div><strong>Check in:</strong> Fri Nov 6 — <em>from 4pm</em></div>
+      <div><strong>Getting there:</strong> From Tainan HSR take the H31 shuttle, get off at "Xiaoximen" — hotel is 100m</div>
+      <div><strong>Check out:</strong> Mon Nov 9 (by 11am)</div>
+    </div>
+    <div class="hotel-walk"><strong>Walking distance from your door:</strong> Blueprint Cultural &amp; Creative Park is essentially next door (under 1 min) · Hai'an Road art corridor 5 min · Hayashi Department Store 8 min · Tainan Art Museum Bldg 2 is at the bus stop outside · Confucius Temple 10 min · Shennong Street 12 min.
+    <br><br><strong>Worth knowing:</strong> Chihkan Tower and the Grand Matsu / God of War temple cluster are further north — about a 20–25 min walk or a NT$100 taxi. Plan the Day 7 temple loop as one northward push rather than dipping back to the hotel.
+    <br><br><strong>4pm check-in</strong> is later than usual — see the Day 6 note. The hotel is Cartoon Network themed, so expect families in the public areas.</div>
+  </div>
 </div>
 
 <!-- DAY 7 -->
@@ -1182,7 +1486,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-culture">Temples</div>
-        <div class="tl-text"><strong>West Central temple walk</strong> — three major temples all within a 10-minute walking loop of each other.</div>
+        <div class="tl-text"><strong>West Central temple walk.</strong> These three sit within a 10-min loop of each other, but the cluster is about a 20–25 min walk north of Hotel Cozzi (or a NT$100 taxi). Go up once and work your way back south — don't bounce back to the hotel in between.</div>
         <div class="place-card">
           <div class="place-name">Chihkan Tower 赤崁樓 (Fort Provintia)</div>
           <div class="place-meta"><span>📍 West Central District</span><span>🕐 8:30am–9pm</span><span>💰 NT$50</span></div>
@@ -1264,7 +1568,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-fest"></div></div>
       <div class="tl-content">
         <div class="tl-label c-fest">Festival</div>
-        <div class="tl-text"><strong>Tainan Jazz Festival — Final Night</strong> at Wu Garden. Second nights of music festivals typically have the most energy — the performers have warmed up, the crowd knows what it's doing. Walk to the venue from your hotel. If you want to split the evening: Jazz Festival until 10pm, then taxi to Garden Night Market (NT$150) which runs until midnight on Saturdays.</div>
+        <div class="tl-text"><strong>Tainan Jazz Festival — Final Night</strong> at Wu Garden. Second nights typically have the most energy. Walk from the hotel and stay for it — don't try to squeeze the Garden Night Market in afterwards, you're doing that properly tomorrow. Eat from the food stalls around the festival instead.</div>
       </div>
     </div>
   </div>
@@ -1437,7 +1741,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-transit">Train South</div>
-        <div class="tl-text"><strong>TRA train from Tainan Station to Kaohsiung</strong> (30 min, NT$69). Check into Kaohsiung hotel near Formosa Boulevard MRT (Red Line) by noon.</div>
+        <div class="tl-text"><strong>TRA train from Tainan Station to Kaohsiung</strong> (30 min, NT$69), then MRT Red Line to <strong>Formosa Boulevard, Exit 6</strong> — Hotel Dùa is a 1-minute walk. If your room isn't ready before 3pm, leave the bags at the front desk and go straight out; everything today is within a few minutes of the hotel.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -1474,7 +1778,18 @@
   <h2 class="city-name">Kaohsiung</h2>
   <p class="city-dates">November 9–12 · 3 nights</p>
   <p class="city-intro">Taiwan's second city is a port town that has reinvented itself through public art and creative culture without losing its working-class harbor soul. Pier 2 — a series of decommissioned warehouses along the waterfront — anchors a creative district that has become the best example of industrial regeneration in Taiwan. The city is also home to wild macaques hiking trails, a dramatic British-era clifftop consulate, and some of the most photogenic religious architecture in the south. The MRT is a single straight north-south Red Line, making it easier to navigate than Taipei.</p>
-  <div class="city-stay"><strong>Stay:</strong> Near Formosa Boulevard MRT (Red Line) · <strong>Hotel Dua</strong> or <strong>Just Sleep Kaohsiung</strong> (mid-range, design sensibility, NT$2,000–4,000) · <strong>Original Hostel</strong> near Pier 2 (budget, social). All within 10 min of Pier 2, Liuhe Night Market, and Love River.</div>
+  <div class="hotel-block">
+    <div class="hotel-name">🏨 Hotel Dùa — BOOKED</div>
+    <div class="hotel-room">Superior Double (Room 12) · Booking ID 1020759774</div>
+    <div class="hotel-grid">
+      <div><strong>Address:</strong> No. 165 Linsen 1st Rd, Xinxing District</div>
+      <div><strong>Check in:</strong> Mon Nov 9</div>
+      <div><strong>Nearest MRT:</strong> Formosa Boulevard — 1 min (Exit 6)</div>
+      <div><strong>Check out:</strong> Thu Nov 12</div>
+    </div>
+    <div class="hotel-walk"><strong>Walking distance from your door:</strong> Dome of Light 5 min (it's inside your own MRT station) · Liuhe Night Market 7 min · Central Park 8 min · Pier 2 Art Center 3 km — 10 min by MRT or LRT.
+    <br><br>This is the best-placed of your four hotels. Formosa Boulevard is the interchange of both Kaohsiung MRT lines, so every day of this leg starts and ends within 60 seconds of your lobby. Rooftop restaurant on floor 15 with city views, and a well-reviewed breakfast buffet.</div>
+  </div>
 </div>
 
 <!-- DAY 10 -->
@@ -1634,8 +1949,8 @@
       <div class="tl-time">3:00pm</div>
       <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
       <div class="tl-content">
-        <div class="tl-label c-culture">Temple Complex</div>
-        <div class="tl-text"><strong>MRT Red Line north to Zuoying → Lotus Lake.</strong></div>
+        <div class="tl-label c-culture">Temple Complex · Optional</div>
+        <div class="tl-text"><strong>MRT Red Line north to Zuoying → Lotus Lake.</strong> Honest note: this comes after a 3-hour mountain hike, and Zuoying is 20 min north of where you've spent the day. If your legs are done, skip it — Lotus Lake is genuinely worth seeing, but not worth grinding through. The alternative is a long, slow dinner in Yancheng and an early night before the travel day.</div>
         <div class="place-card">
           <div class="place-name">Lotus Lake 蓮池潭 — Dragon & Tiger Pagodas</div>
           <div class="place-meta">
@@ -1683,7 +1998,7 @@
   <div class="day-header">
     <div class="day-number">Day 12 · Thu Nov 12</div>
     <div>
-      <h3 class="day-title">Ciaotou Sugar Factory → HSR Back to Taipei</h3>
+      <h3 class="day-title">Ciaotou Sugar Factory → HSR to Taipei → Parkview Check-in → Bishanyan Sunset</h3>
       <div>
         <span class="tag tag-route">Transit Day — Ciaotou is one stop before the HSR station</span>
       </div>
@@ -1696,7 +2011,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-transit">Morning</div>
-        <div class="tl-text">Relaxed hotel checkout. Grab breakfast near the hotel — last Kaohsiung meal. Then MRT Red Line north toward Zuoying, stopping one station early at <strong>Ciaotou Refinery</strong>.</div>
+        <div class="tl-text">Breakfast on the 15th floor at Dùa, then check out. MRT Red Line north from Formosa Boulevard to <strong>Zuoying</strong> (about 20 min) and stash your bags in the station lockers before doing anything else.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -1704,7 +2019,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-art">Industrial Heritage</div>
-        <div class="tl-text"><strong>Ciaotou Refinery MRT station → Qiaotou Sugar Factory.</strong></div>
+        <div class="tl-text"><strong>Zuoying → Qiaotou Sugar Refinery station.</strong> Correction worth knowing: Qiaotou is <em>two stops north past</em> Zuoying, not before it. So the move is — ride up with your bags, <strong>leave them in the coin lockers at Zuoying HSR station</strong>, then continue north two stops unencumbered, explore, and come back. Round trip is about 30 min of travel.</div>
         <div class="place-card">
           <div class="place-name">Qiaotou Sugar Factory 橋頭糖廠</div>
           <div class="place-meta">
@@ -1723,22 +2038,44 @@
       <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-transit">HSR North</div>
-        <div class="tl-text"><strong>MRT one stop north → Zuoying HSR Station → HSR to Taipei</strong> (1.5 hrs, NT$1,490). Arrive Taipei ~3:30–4pm. Check into hotel — same Ximending area recommended for easy airport access Nov 14.</div>
+        <div class="tl-text"><strong>Back to Zuoying, collect bags → HSR to Taipei</strong> (1.5 hrs, NT$1,490). Arrive Taipei ~3:30–4pm. Check into hotel — same Ximending area recommended for easy airport access Nov 14.</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">5:00pm</div>
       <div class="tl-dot-col"><div class="tl-dot bg-hike"></div></div>
       <div class="tl-content">
-        <div class="tl-label c-hike">Recovery</div>
-        <div class="tl-text"><strong>Beitou hot springs</strong> (MRT Red Line, 20 min north) — free outdoor foot-soaking pool in Beitou Park. Then the <strong>Beitou Hot Spring Museum</strong> (1913 Japanese-era wooden building, free, beautiful) and the <strong>Beitou Public Library</strong> — consistently voted one of the most beautiful library buildings in the world, a green-certified wooden structure embedded in the forest above the hot spring valley. Deeply restorative after 12 days of walking.</div>
+        <div class="tl-label c-culture">Check In + Sunset</div>
+        <div class="tl-text">Arrive Taipei ~3:30pm. MRT to <strong>Songjiang Nanjing</strong> and check into <strong>Parkview Taipei</strong> (5-min walk, No. 49 Jilin Rd). Drop bags, catch your breath.
+        <br><br>Then head out for sunset at <strong>Bishanyan</strong> — from Songjiang Nanjing it's the Brown Line to Neihu, then the S2 shuttle bus (about 35 min door to temple). Aim to be there by 4:45pm.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">4:45pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-culture">Temple + Sunset View · Optional</div>
+        <div class="tl-text"><strong>Bishanyan Kaizhang Shengwang Temple</strong> — MRT Brown Line to Neihu, then bus S2 (8 min) to the Bishanyan stop.</div>
+        <div class="place-card">
+          <div class="place-name">Bishanyan Kaizhang Shengwang Temple 碧山巖開漳聖王廟</div>
+          <div class="place-meta">
+            <span>📍 Mt. Bishan, Neihu District</span>
+            <span>🕐 Open daily 5am–9:30pm</span>
+            <span>💰 Free</span>
+            <span>🚇 MRT Brown Line to Neihu → Bus S2 to Bishanyan stop (~8 min)</span>
+          </div>
+          <div class="place-desc">One of Taipei's most visually striking temples and one of its least-known great viewpoints. Built in 1751 on the summit of Mt. Bishan in Neihu, the temple is dedicated to Chen Yuan-Kuang — a Tang Dynasty general revered as a patron saint by Fujianese settlers — and its architecture is extraordinary: vivid painted murals across every beam, hand-carved dragons coiling along the roof ridges, and intricate tilework covering the entire complex in an explosion of color. But the real revelation is the <strong>panoramic viewing platform</strong>: from the balcony in front of the main hall you look out over the entire Taipei Basin — Taipei 101 directly ahead, the Grand Hotel to the northwest, Songshan Airport to the northeast, the Keelung River winding below, and on clear days the mountains all the way to the coast. It's a completely different angle from Elephant Mountain, and arguably more dramatic because you're surrounded by forest rather than city.<br><br>
+          The best time to visit is the <strong>hour before sunset</strong>: the sky transitions from blue to gold to pink above downtown Taipei, and the city lights begin coming on as you watch. After dark the city lights spread out like a circuit board — stunning and entirely free.</div>
+          <div class="place-tip">Arrive at least 1.5 hrs before sunset on weekends for a good railing spot. Weekday afternoons are much quieter. There's a small café inside the temple (donation-based coffee) with the same view.</div>
+          <div class="place-tip">The S2 shuttle bus from Neihu MRT is the easiest approach — winds up the mountain road and drops you at the temple entrance. The bus driver handles the hairpin curves with cheerful confidence.</div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="tip-box">
     <div class="tip-head">Route efficiency note</div>
-    Ciaotou Refinery MRT → Zuoying HSR (1 stop). The sugar factory is literally one stop before your train — the most efficient possible exit from Kaohsiung.
+Formosa Boulevard → Zuoying (bags into lockers) → 2 stops north to Qiaotou Sugar Refinery → back to Zuoying → HSR north. The small backtrack is worth it, and travelling those two stops without luggage makes it painless.
   </div>
 </div>
 
@@ -1749,7 +2086,19 @@
   <h2 class="city-name">Taipei Again</h2>
   <p class="city-dates">November 12–14 · 2 nights · depart 11am Nov 14</p>
   <p class="city-intro">Coming back to Taipei after two weeks in the south has a particular quality: the city feels both familiar and refreshed. Use these final days to see what didn't fit at the start — Guandu Temple's dramatic cliff-carved interior, the Beitou valley, the rose gardens in Xinsheng Park — and to close the trip with a Golden Horse evening screening and a slow last morning before the airport.</p>
-  <div class="city-stay"><strong>Stay:</strong> Same Ximending area for easy airport MRT access. Alternatively, a hotel near Taipei Main Station saves 5 minutes on departure morning.</div>
+  <div class="hotel-block">
+    <div class="hotel-name">🏨 Parkview Taipei — BOOKED</div>
+    <div class="hotel-room">Nov 12 – Nov 14 · 2 nights</div>
+    <div class="hotel-grid">
+      <div><strong>Address:</strong> No. 49 Jilin Rd, Zhongshan District, 10458</div>
+      <div><strong>Check in:</strong> Thu Nov 12 (from 3pm)</div>
+      <div><strong>Nearest MRT:</strong> Songjiang Nanjing — 5 min (Orange + Green Lines)</div>
+      <div><strong>Check out:</strong> Sat Nov 14 (by 11am)</div>
+    </div>
+    <div class="hotel-walk"><strong>Walking distance from your door:</strong> Addiction Aquatic Development 10 min · Xingtian Temple 17 min · Xinsheng Park (rose exhibition) 15 min · Chifeng Street 15 min · Ningxia Night Market 12 min.
+    <br><br><strong>Airport run on Nov 14:</strong> Songjiang Nanjing → Taipei Main Station is 3 stops on the Orange Line (about 8 min), then transfer to the Airport MRT (35 min). Budget 55 min door to terminal, plus a buffer. Comfortable for an 11am flight if you leave by 8:30am.
+    <br><br>Request a high floor when you arrive — the lower floors don't get the view the name promises.</div>
+  </div>
 </div>
 
 <!-- DAY 13 -->
@@ -1757,7 +2106,7 @@
   <div class="day-header">
     <div class="day-number">Day 13 · Fri Nov 13</div>
     <div>
-      <h3 class="day-title">Guandu Temple · Beitou Hot Springs · Xinsheng Park Roses · Golden Horse Film</h3>
+      <h3 class="day-title">Guandu Temple · Beitou Hot Springs · Addiction Aquatic · Roses · Golden Horse</h3>
       <div>
         <span class="tag tag-new">Guandu added</span>
         <span class="tag tag-fest">🌹 Rose Exhibition</span>
@@ -1773,7 +2122,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-culture"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-culture">Temple</div>
-        <div class="tl-text"><strong>MRT Red Line to Xinbeitou → transfer to Guandu line → Guandu station.</strong></div>
+        <div class="tl-text">From Parkview, walk to <strong>Songjiang Nanjing</strong> → Orange Line to Minquan W. Rd → transfer to Red Line north → <strong>Guandu station</strong>. About 30 min total.</div>
         <div class="place-card">
           <div class="place-name">Guandu Temple 關渡宮</div>
           <div class="place-meta">
@@ -1793,15 +2142,47 @@
       <div class="tl-dot-col"><div class="tl-dot bg-hike"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-hike">Hot Springs</div>
-        <div class="tl-text"><strong>MRT back one stop to Xinbeitou → Beitou Hot Spring district.</strong> Walk through Beitou Park down to the hot spring valley: the <strong>Beitou Hot Spring Museum</strong> (1913 Japanese-era wooden building, free, beautiful Meiji-era architecture), then the <strong>public foot-soaking pool</strong> in the park — free, naturally geothermal, wooden benches, elderly locals and children alike. The <strong>Beitou Public Library</strong> just above (5-min walk) is worth a quick look: a gorgeous green-certified wooden structure that won architecture awards and looks like it was grown from the forest around it. A calm, beautiful hour.</div>
+        <div class="tl-text"><strong>Two stops south on the Red Line to Xinbeitou</strong> — Guandu and Beitou are on the same line, which is why they belong on the same day.</div>
+        <div class="place-card">
+          <div class="place-name">Beitou Hot Spring District 北投溫泉</div>
+          <div class="place-meta">
+            <span>📍 Beitou District, north Taipei</span>
+            <span>🚇 Xinbeitou MRT (Red Line branch)</span>
+            <span>💰 Free (public foot bath + museum + library)</span>
+            <span>⏱ 2 hrs at an easy pace</span>
+          </div>
+          <div class="place-desc">A geothermal valley in the hills at the end of the MRT line, developed as a hot spring resort by the Japanese in the 1890s and still steaming. Walk up through Beitou Park past the sulfur creek: the <strong>Beitou Hot Spring Museum</strong> is a beautiful 1913 Japanese bathhouse with tatami floors, stained glass, and the original Roman-style bathing pool preserved inside — free to enter. Just above it, the <strong>Beitou Public Library</strong> is a green-certified timber building on stilts among the trees, regularly named one of the most beautiful libraries in the world. The <strong>free public foot-soaking pool</strong> in the park has wooden benches, naturally geothermal water, and a mixed crowd of elderly locals and kids.<br><br>
+          If you want a proper soak rather than just your feet, several bathhouses along the valley do walk-in public baths for NT$40–150. Bring a towel or buy one there.</div>
+          <div class="place-tip">Twelve days of walking end here. This is the single most restorative stop of the trip and it costs nothing — don't rush it.</div>
+        </div>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-time">2:00pm</div>
+      <div class="tl-time">2:30pm</div>
+      <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-label c-art">Market · Grocery</div>
+        <div class="tl-text"><strong>Addiction Aquatic Development 上引水產</strong> — Red Line back south to Minquan W. Rd, then it's a 10-min walk (or 10 min on foot from Parkview if you drop things at the hotel first).</div>
+        <div class="place-card">
+          <div class="place-name">Addiction Aquatic Development 上引水產</div>
+          <div class="place-meta">
+            <span>📍 No. 18, Alley 2, Lane 410, Minzu E. Rd, Zhongshan District</span>
+            <span>🕐 Daily ~10am–9pm</span>
+            <span>💰 Free entry · food priced individually</span>
+          </div>
+          <div class="place-desc">Taipei's former wholesale fish market reinvented as an upscale seafood emporium — and one of the most genuinely fun food spaces in the city. It's part fish market, part grocery store, part standing sushi bar. You walk through refrigerated aisles of pristine seafood on ice, a sake and wine section, a Japanese grocery area with imported snacks and condiments, a hot food counter, and an outdoor charcoal grill area where you can pick seafood and have it cooked on the spot. The <strong>standing sushi bar</strong> is the main event: you eat elbow-to-elbow at a counter, no seats, everything extremely fresh, and it moves fast.<br><br>
+          Even if you don't eat here, the grocery section is excellent for picking up Taiwanese and Japanese pantry items, sauces, dried seafood, and quality sake to bring home. It's a completely different energy from a night market — cleaner, more curated, and popular with locals rather than being a tourist stop.</div>
+          <div class="place-tip">Go hungry. The standing sushi bar has no reservations and the queue moves quickly. Weekday afternoons are the quietest window.</div>
+          <div class="place-tip">It's about 10 min from Parkview Taipei if that's where you're staying — an easy walk or one MRT stop.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">3:30pm</div>
       <div class="tl-dot-col"><div class="tl-dot bg-art"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-art">Park</div>
-        <div class="tl-text"><strong>MRT south to Zhongshan Junior High → Xinsheng Park Rose Exhibition.</strong></div>
+        <div class="tl-text"><strong>MRT to Zhongshan Junior High → Xinsheng Park Rose Exhibition.</strong></div>
         <div class="place-card">
           <div class="place-name">Xinsheng Park Rose Exhibition 新生公園玫瑰花展</div>
           <div class="place-meta">
@@ -1846,7 +2227,7 @@
     </div>
   </div>
 
-  <div class="route-note">Guandu (north, end of Red Line branch) → Xinbeitou (1 stop south) → MRT south to Zhongshan Junior High (Xinsheng Park) → center for Golden Horse screening. All trending southward on the same MRT line — one clean sweep.</div>
+  <div class="route-note">Parkview → Guandu (far north) → Xinbeitou (2 stops south) → back south to the Zhongshan cluster for Addiction Aquatic + Xinsheng Park roses → Golden Horse in the evening. One straight north-to-south run on the Red Line, finishing within walking distance of your hotel. <strong>Realistic load:</strong> Guandu and Beitou are both slow, sitting-down places — this is deliberately the gentlest full day of the trip, because it's the last one.</div>
 </div>
 
 <!-- DAY 14 -->
@@ -1863,7 +2244,7 @@
 
   <div class="tip-box">
     <div class="tip-head">Morning note</div>
-    Bags packed the night before. A slow last breakfast before heading to the airport — the right way to end the trip. The math is comfortable: leave hotel by 8:45am → MRT to Taipei Main Station (10 min) → Airport MRT (35 min) → arrive TPE by 9:30am → check in and clear security by 10:15am → 11am flight.
+    Parkview checkout is 11am, so there's no pressure to vacate early — but your flight is at 11am, so you'll be long gone. Bags packed the night before. The math from Jilin Rd: leave the hotel by <strong>8:30am</strong> → walk 5 min to Songjiang Nanjing → Orange Line 3 stops to Taipei Main (8 min) → Airport MRT (35 min) → at TPE by <strong>9:30am</strong> → checked in and through security by 10:15am. Comfortable, with a real buffer.
   </div>
 
   <div class="timeline">
@@ -1872,7 +2253,8 @@
       <div class="tl-dot-col"><div class="tl-dot bg-food"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-food">Last Breakfast</div>
-        <div class="tl-text">Wake up without an alarm. Bags already packed from the night before. Sit-down breakfast near the hotel — a final proper Taipei morning. Options depending on where you're staying: a local breakfast shop (早餐店) for egg crepes and soy milk, a tea house dim sum, or the Ximending McDonald's (genuinely a Taipei institution with local menu items, and good for a leisurely last sit). Take your time — you've earned it.</div>
+        <div class="tl-text">Bags already packed. Take the <strong>Parkview breakfast buffet</strong> — it's one of the best-reviewed things about the hotel, with Taiwanese scallion pancake and daikon cake cooked to order alongside fresh soy milk, kombucha on tap, and proper coffee. Sit with it. You have well over an hour and nowhere to be.</div>
+        <div class="tl-detail">If you'd rather go out: there are breakfast shops (早餐店) all along Jilin Rd within a few minutes' walk, and Xingtian Temple is 17 min away if you want one last quiet moment before the airport.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -1880,7 +2262,7 @@
       <div class="tl-dot-col"><div class="tl-dot bg-transit"></div><div class="tl-line"></div></div>
       <div class="tl-content">
         <div class="tl-label c-transit">Head Out</div>
-        <div class="tl-text">Checkout. MRT to Taipei Main Station (~10 min from Ximending). Walk to the Airport MRT platform — it's a separate ticketed platform in the same building.</div>
+        <div class="tl-text">Checkout. Walk 5 min to <strong>Songjiang Nanjing</strong> → Orange Line to <strong>Taipei Main Station</strong> (3 stops, ~8 min) → follow signs to the Airport MRT, which is a separate ticketed platform in the same complex. Trains every 15 min.</div>
       </div>
     </div>
     <div class="tl-item">
@@ -1976,5 +2358,139 @@
   Taipei · Tainan · Kaohsiung &nbsp;·&nbsp; Generated June 2026 &nbsp;·&nbsp; Always verify hours and prices locally before visiting
 </div>
 
+
+<script>
+(function(){
+  // ─── Wrap each day-section into a collapsible <details> ───
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.day-section'));
+  var navItems = [];
+
+  sections.forEach(function(sec, i){
+    var numEl = sec.querySelector('.day-number');
+    var titleEl = sec.querySelector('.day-title');
+    if(!numEl || !titleEl) return;
+
+    var numTxt = numEl.textContent.trim();          // "Day 3 · Tue Nov 3"
+    var titleTxt = titleEl.textContent.trim();
+    var shortDay = (numTxt.split('·')[0] || '').trim(); // "Day 3"
+
+    // Determine city colour from nearest preceding city-header
+    var cls = 'tp', node = sec.previousElementSibling;
+    while(node){
+      if(node.classList && node.classList.contains('city-header')){
+        if(node.classList.contains('tainan')) cls='tn';
+        else if(node.classList.contains('kaohsiung')) cls='kh';
+        else cls='tp';
+        break;
+      }
+      node = node.previousElementSibling;
+    }
+
+    // Collect tags for summary chips
+    var chips = Array.prototype.slice.call(sec.querySelectorAll('.day-header .tag'))
+      .map(function(t){ return t.textContent.trim(); }).slice(0,3);
+
+    var id = 'day-' + (i+1);
+    sec.id = id;
+    navItems.push({id:id, label:shortDay, cls:cls});
+
+    var det = document.createElement('details');
+    det.className = 'day-wrap';
+    det.setAttribute('data-day', id);
+
+    var sum = document.createElement('summary');
+    sum.innerHTML =
+      '<span class="sum-chev">&#9656;</span>' +
+      '<span class="sum-body">' +
+        '<span class="sum-date">' + numTxt + '</span>' +
+        '<span class="sum-title">' + titleTxt + '</span>' +
+        (chips.length ? '<span class="sum-chips">' + chips.map(function(x){
+          return '<span class="sum-chip">' + x + '</span>'; }).join('') + '</span>' : '') +
+      '</span>';
+
+    sec.parentNode.insertBefore(det, sec);
+    det.appendChild(sum);
+    det.appendChild(sec);
+
+    // Hide the now-redundant inner header block
+    var dh = sec.querySelector('.day-header');
+    if(dh) dh.style.display = 'none';
+  });
+
+  // ─── Build sticky day nav ───
+  if(navItems.length){
+    var nav = document.createElement('div');
+    nav.id = 'daynav';
+    nav.innerHTML = '<div class="daynav-inner">' + navItems.map(function(n){
+      return '<a class="daynav-btn ' + n.cls + '" href="#' + n.id + '">' + n.label + '</a>';
+    }).join('') + '</div>';
+    var keybar = document.querySelector('.key-bar');
+    if(keybar && keybar.parentNode) keybar.parentNode.insertBefore(nav, keybar.nextSibling);
+
+    // Smooth scroll + auto-open target day
+    nav.addEventListener('click', function(e){
+      var a = e.target.closest('a.daynav-btn');
+      if(!a) return;
+      e.preventDefault();
+      var tgt = document.querySelector(a.getAttribute('href'));
+      if(!tgt) return;
+      var det = tgt.closest('details.day-wrap');
+      if(det) det.open = true;
+      setTimeout(function(){
+        var y = (det||tgt).getBoundingClientRect().top + window.pageYOffset - 56;
+        window.scrollTo({top:y, behavior:'smooth'});
+      }, 60);
+    });
+  }
+
+  // ─── Expand / collapse all ───
+  var ctl = document.createElement('div');
+  ctl.className = 'allctl';
+  ctl.innerHTML = '<button id="expAll">Expand all days</button><button id="colAll">Collapse all</button>';
+  var firstCity = document.querySelector('.city-header');
+  if(firstCity && firstCity.parentNode) firstCity.parentNode.insertBefore(ctl, firstCity);
+
+  ctl.addEventListener('click', function(e){
+    if(e.target.id === 'expAll'){
+      document.querySelectorAll('details.day-wrap').forEach(function(d){ d.open = true; });
+      document.querySelectorAll('.place-card.collapsible').forEach(function(p){
+        p.classList.add('open');
+        var b = p.querySelector('.pc-toggle'); if(b) b.textContent = 'Show less \u25B4';
+      });
+    }
+    if(e.target.id === 'colAll'){
+      document.querySelectorAll('details.day-wrap').forEach(function(d){ d.open = false; });
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  });
+
+  // ─── Make long place-card descriptions collapsible ───
+  document.querySelectorAll('.place-card').forEach(function(card){
+    var desc = card.querySelector('.place-desc');
+    if(!desc) return;
+    if(desc.textContent.trim().length < 240 && !card.querySelector('.place-tip')) return;
+    card.classList.add('collapsible');
+    var btn = document.createElement('button');
+    btn.className = 'pc-toggle';
+    btn.textContent = 'Read more \u25BE';
+    card.appendChild(btn);
+    btn.addEventListener('click', function(){
+      var open = card.classList.toggle('open');
+      btn.textContent = open ? 'Show less \u25B4' : 'Read more \u25BE';
+    });
+  });
+
+  // ─── Open first day by default; open day matching URL hash ───
+  var firstDet = document.querySelector('details.day-wrap');
+  if(firstDet) firstDet.open = true;
+  if(location.hash){
+    var h = document.querySelector(location.hash);
+    if(h){
+      var d = h.closest('details.day-wrap');
+      if(d){ d.open = true; setTimeout(function(){ d.scrollIntoView(); }, 80); }
+    }
+  }
+})();
+</script>
 </body>
 </html>
